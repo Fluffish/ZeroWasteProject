@@ -17,4 +17,122 @@
         </properties>
 
     </persistence-unit>
+
+    <persistence-unit name="UserPossessUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="StorageTypeUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="FoodUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="FoodTypeUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="ContainsFoodUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="RecipeUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="RecipeTypeUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="UseFoodUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="CaracterizeRecipeUnit">
+
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
+            <property name="javax.persistence.jdbc.user" value="Florent"/>
+            <property name="javax.persistence.jdbc.password" value="Zer0Wast3Admin"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
 </persistence>
