@@ -5,23 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class Users {
-    private int id_user;
+    private Integer id_user;
     private String username;
     private String password;
     private String mail_user;
     private String tel_user;
-    private int user_max_budget;
-    private int user_current_budget;
+    private Integer user_max_budget;
+    private Integer user_current_budget;
 
 
     @Id
     @Column(name = "id_user")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId_user() {
+    public Integer getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(Integer id_user) {
         this.id_user = id_user;
     }
 
@@ -67,21 +67,21 @@ public class Users {
 
     @Column(name = "user_max_budget")
     @NotNull
-    public int getUser_max_budget() {
+    public Integer getUser_max_budget() {
         return user_max_budget;
     }
 
-    public void setUser_max_budget(int user_max_budget) {
+    public void setUser_max_budget(Integer user_max_budget) {
         this.user_max_budget = user_max_budget;
     }
 
     @Column(name = "user_current_budget")
     @NotNull
-    public int getUser_current_budget() {
+    public Integer getUser_current_budget() {
         return user_current_budget;
     }
 
-    public void setUser_current_budget(int user_current_budget) {
+    public void setUser_current_budget(Integer user_current_budget) {
         this.user_current_budget = user_current_budget;
     }
 }

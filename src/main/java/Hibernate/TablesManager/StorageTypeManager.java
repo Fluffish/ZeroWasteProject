@@ -1,34 +1,33 @@
 package Hibernate.TablesManager;
 
-import Hibernate.Tables.Users;
+import Hibernate.Tables.Storage_Type;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class UsersManager implements Manager {
+public class StorageTypeManager implements Manager {
     private EntityManagerFactory factory;
     private EntityManager entityManager;
 
     @Override
     public void Connect() {
-        factory = Persistence.createEntityManagerFactory("UsersUnit");
+        factory = Persistence.createEntityManagerFactory("StorageTypeUnit");
         entityManager = factory.createEntityManager();
     }
 
     public void Insert() {
+
         entityManager.getTransaction().begin();
 
-        Users newUser = new Users();
-        newUser.setUsername("Florent");
-        newUser.setPassword("AdminZeroWaste");
-        newUser.setMail_user("Florent@zeroWaste.com");
-        newUser.setTel_user("06.06.06.06.06");
-        newUser.setUser_max_budget(150);
-        newUser.setUser_current_budget(0);
+        Storage_Type newStorage = new Storage_Type();
+        newStorage.setStorage_name("Placard");
+        newStorage.setStorage_temp(20);
 
-        entityManager.persist(newUser);
+        entityManager.persist(newStorage);
 
         entityManager.getTransaction().commit();
+
     }
 
     @Override
@@ -36,4 +35,5 @@ public class UsersManager implements Manager {
         entityManager.close();
         factory.close();
     }
+
 }
