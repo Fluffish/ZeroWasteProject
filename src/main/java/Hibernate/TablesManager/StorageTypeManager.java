@@ -4,7 +4,7 @@ import Hibernate.Tables.Storage_Type;
 
 public class StorageTypeManager extends Manager<Storage_Type> {
 
-    public Storage_Type FindStorage(Integer id_storage) {
+    public Storage_Type FindStorageById(Integer id_storage) {
         Connect(Storage_Type.class.getName());
 
         entityManager.getTransaction().begin();

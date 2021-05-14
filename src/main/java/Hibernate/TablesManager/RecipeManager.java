@@ -1,12 +1,17 @@
 package Hibernate.TablesManager;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import Hibernate.Tables.Recipe;
 
-public class RecipeManager  {
-    private EntityManagerFactory factory;
-    private EntityManager entityManager;
+public class RecipeManager extends Manager<Recipe> {
 
+    public Recipe FindRecipeById(Integer id_recipe) {
+        Connect(Recipe.class.getName());
 
+        entityManager.getTransaction().begin();
+        Recipe recipe = entityManager.find(Recipe.class,id_recipe);
+        entityManager.getTransaction().commit();
+
+        Disconnect();
+        return recipe;
+    }
 }
