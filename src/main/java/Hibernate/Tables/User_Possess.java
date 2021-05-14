@@ -9,12 +9,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_possess")
 public class User_Possess {
-    private Integer id_user;
-    private Integer id_storage;
-
     @Id
     @Column(name = "id_user")
     @NotNull
+    private Integer id_user;
+
+    @Id
+    @Column(name = "id_storage")
+    @NotNull
+    private Integer id_storage;
+
+
     public Integer getId_user() {
         return id_user;
     }
@@ -23,9 +28,6 @@ public class User_Possess {
         this.id_user = id_user;
     }
 
-    @Id
-    @Column(name = "id_storage")
-    @NotNull
     public Integer getId_storage() {
         return id_storage;
     }

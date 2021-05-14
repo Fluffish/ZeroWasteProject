@@ -1,11 +1,13 @@
 import Hibernate.TablesManager.StorageTypeManager;
-import Hibernate.TablesManager.UsersManager;
 
 public class TestInsert {
 
     public static void main(String[] args) {
 
-        StorageTypeManager manageInsert = new StorageTypeManager();
-        manageInsert.Insert();
+        StorageTypeManager storageTypeManager = new StorageTypeManager();
+        System.out.println(storageTypeManager.FindStorage(2).getStorage_name());
+
+        //UserPossessManager userPossessManager = new UserPossessManager();
+        //userPossessManager.Insert(1, 3);
     }
 }

@@ -1,14 +1,11 @@
 package Hibernate.TablesManager;
 
 
-public class UserPossessManager implements Manager {
+import Hibernate.Tables.User_Possess;
+import Hibernate.Tables.Users;
 
-    public void Connect() {
+public class UserPossessManager extends Manager<User_Possess> {
 
-    }
 
-    public void Disconnect() {
-
-    }
 
 }

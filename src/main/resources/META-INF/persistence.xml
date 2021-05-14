@@ -18,7 +18,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="UserPossessUnit">
+    <persistence-unit name="User_PossessUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -31,7 +31,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="StorageTypeUnit">
+    <persistence-unit name="Storage_TypeUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -57,7 +57,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="FoodTypeUnit">
+    <persistence-unit name="Food_TypeUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -70,7 +70,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="ContainsFoodUnit">
+    <persistence-unit name="Contains_FoodUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -96,7 +96,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="RecipeTypeUnit">
+    <persistence-unit name="Recipe_TypeUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -109,7 +109,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="UseFoodUnit">
+    <persistence-unit name="Use_FoodUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>
@@ -122,7 +122,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="CaracterizeRecipeUnit">
+    <persistence-unit name="Caracterize_RecipeUnit">
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zerowasteproject"/>

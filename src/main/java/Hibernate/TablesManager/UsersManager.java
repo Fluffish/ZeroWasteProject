@@ -1,39 +1,39 @@
 package Hibernate.TablesManager;
 
 import Hibernate.Tables.Users;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-public class UsersManager implements Manager {
-    private EntityManagerFactory factory;
-    private EntityManager entityManager;
+public class UsersManager extends Manager<Users> {
 
-    @Override
-    public void Connect() {
-        factory = Persistence.createEntityManagerFactory("UsersUnit");
-        entityManager = factory.createEntityManager();
-    }
+    public Users FindUser(Integer id_user) {
+        Connect(Users.class.getName());
 
-    public void Insert() {
         entityManager.getTransaction().begin();
-
-        Users newUser = new Users();
-        newUser.setUsername("Florent");
-        newUser.setPassword("AdminZeroWaste");
-        newUser.setMail_user("Florent@zeroWaste.com");
-        newUser.setTel_user("06.06.06.06.06");
-        newUser.setUser_max_budget(150);
-        newUser.setUser_current_budget(0);
-
-        entityManager.persist(newUser);
-
+        Users user = entityManager.find(Users.class,id_user);
         entityManager.getTransaction().commit();
+
+        Disconnect();
+
+        return user;
     }
 
-    @Override
-    public void Disconnect() {
-        entityManager.close();
-        factory.close();
+    public void Merge(Users user) {
+        Connect(user.getClass().getName());
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(user);
+        entityManager.getTransaction().commit();
+
+        Disconnect();
+    }
+
+    public void Remove(Users user) {
+
+        Connect(user.getClass().getName());
+
+        entityManager.getTransaction().begin();
+        entityManager.remove(entityManager.contains(user) ? user : entityManager.merge(user));
+        entityManager.getTransaction().commit();
+
+        Disconnect();
     }
 }
