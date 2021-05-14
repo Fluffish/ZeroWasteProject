@@ -14,6 +14,14 @@ public class Contains_Food {
     private java.sql.Date food_add_date;
     private float food_price;
 
+    public Contains_Food(Integer id_storage, Integer id_food, Date food_limit_date, Date food_add_date, float food_price) {
+        this.id_storage = id_storage;
+        this.id_food = id_food;
+        this.food_limit_date = food_limit_date;
+        this.food_add_date = food_add_date;
+        this.food_price = food_price;
+    }
+
     @Id
     @Column(name = "id_storage")
     public Integer getId_storage() {

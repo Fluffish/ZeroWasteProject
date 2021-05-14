@@ -1,39 +1,26 @@
 package Hibernate.TablesManager;
 
 import Hibernate.Tables.Users;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.List;
 
-public class UsersManager implements Manager {
-    private EntityManagerFactory factory;
-    private EntityManager entityManager;
+public class UsersManager extends Manager<Users> {
 
-    @Override
-    public void Connect() {
-        factory = Persistence.createEntityManagerFactory("UsersUnit");
-        entityManager = factory.createEntityManager();
-    }
+    public Users FindUserById(Integer id_user) {
+        Connect(Users.class.getName());
 
-    public void Insert() {
         entityManager.getTransaction().begin();
-
-        Users newUser = new Users();
-        newUser.setUsername("Florent");
-        newUser.setPassword("AdminZeroWaste");
-        newUser.setMail_user("Florent@zeroWaste.com");
-        newUser.setTel_user("06.06.06.06.06");
-        newUser.setUser_max_budget(150);
-        newUser.setUser_current_budget(0);
-
-        entityManager.persist(newUser);
-
+        Users user = entityManager.find(Users.class,id_user);
         entityManager.getTransaction().commit();
+
+        Disconnect();
+
+        return user;
     }
 
-    @Override
-    public void Disconnect() {
-        entityManager.close();
-        factory.close();
+    public Boolean UsernameAlreadyUsed(String username) {
+        String sqlQuery = "SELECT x FROM Users x WHERE x.username = '" + username + "'";
+        List<Users> result = MakeQuery(Users.class.getName(), sqlQuery);
+        return result.size() != 0;
     }
+
 }

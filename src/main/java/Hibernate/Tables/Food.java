@@ -11,6 +11,20 @@ public class Food {
     private String food_name;
     private Integer id_food_type;
 
+    public Food() {
+    }
+
+    public Food(String food_name, Integer id_food_type) {
+        this.food_name = food_name;
+        this.id_food_type = id_food_type;
+    }
+
+    public Food(Integer id_food, String food_name, Integer id_food_type) {
+        this.id_food = id_food;
+        this.food_name = food_name;
+        this.id_food_type = id_food_type;
+    }
+
     @Id
     @Column(name = "id_food")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

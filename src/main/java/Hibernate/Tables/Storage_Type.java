@@ -11,6 +11,20 @@ public class Storage_Type {
     private Integer storage_temp;
 
 
+    public Storage_Type() {
+    }
+
+    public Storage_Type(Integer id_storage, String storage_name, Integer storage_temp) {
+        this.id_storage = id_storage;
+        this.storage_name = storage_name;
+        this.storage_temp = storage_temp;
+    }
+
+    public Storage_Type(String storage_name, Integer storage_temp) {
+        this.storage_name = storage_name;
+        this.storage_temp = storage_temp;
+    }
+
     @Id
     @Column(name = "id_storage")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,6 +13,27 @@ public class Users {
     private Integer user_max_budget;
     private Integer user_current_budget;
 
+    public Users() {
+    }
+
+    public Users(String username, String password, String mail_user, String tel_user, Integer user_max_budget, Integer user_current_budget) {
+        this.username = username;
+        this.password = password;
+        this.mail_user = mail_user;
+        this.tel_user = tel_user;
+        this.user_max_budget = user_max_budget;
+        this.user_current_budget = user_current_budget;
+    }
+
+    public Users(Integer id_user, String username, String password, String mail_user, String tel_user, Integer user_max_budget, Integer user_current_budget) {
+        this.id_user = id_user;
+        this.username = username;
+        this.password = password;
+        this.mail_user = mail_user;
+        this.tel_user = tel_user;
+        this.user_max_budget = user_max_budget;
+        this.user_current_budget = user_current_budget;
+    }
 
     @Id
     @Column(name = "id_user")
