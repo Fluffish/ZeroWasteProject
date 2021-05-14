@@ -9,6 +9,17 @@ public class Food_Type {
     private Integer id_food_type;
     private String food_type_name;
 
+    public Food_Type() {
+    }
+
+    public Food_Type(String food_type_name) {
+        this.food_type_name = food_type_name;
+    }
+
+    public Food_Type(Integer id_food_type, String food_type_name) {
+        this.id_food_type = id_food_type;
+        this.food_type_name = food_type_name;
+    }
 
     @Id
     @Column(name = "id_food_type")

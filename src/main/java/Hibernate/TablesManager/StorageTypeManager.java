@@ -15,25 +15,4 @@ public class StorageTypeManager extends Manager<Storage_Type> {
 
         return storage_type;
     }
-
-    public void Merge(Storage_Type storage_type) {
-        Connect(Storage_Type.class.getName());
-
-        entityManager.getTransaction().begin();
-        entityManager.merge(storage_type);
-        entityManager.getTransaction().commit();
-
-        Disconnect();
-    }
-
-    public void Remove(Storage_Type storage_type) {
-
-        Connect(Storage_Type.class.getName());
-
-        entityManager.getTransaction().begin();
-        entityManager.remove(entityManager.contains(storage_type) ? storage_type : entityManager.merge(storage_type));
-        entityManager.getTransaction().commit();
-
-        Disconnect();
-    }
 }

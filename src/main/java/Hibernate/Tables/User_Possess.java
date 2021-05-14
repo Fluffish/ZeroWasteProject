@@ -20,6 +20,11 @@ public class User_Possess {
     private Integer id_storage;
 
 
+    public User_Possess(Integer id_user, Integer id_storage) {
+        this.id_user = id_user;
+        this.id_storage = id_storage;
+    }
+
     public Integer getId_user() {
         return id_user;
     }

@@ -9,6 +9,12 @@ public class Use_Food {
     private Integer id_food;
     private String quantity;
 
+    public Use_Food(Integer id_recipe, Integer id_food, String quantity) {
+        this.id_recipe = id_recipe;
+        this.id_food = id_food;
+        this.quantity = quantity;
+    }
+
     @Id
     @Column(name = "id_recipe")
     public Integer getId_recipe() {

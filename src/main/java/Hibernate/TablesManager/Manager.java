@@ -1,5 +1,7 @@
 package Hibernate.TablesManager;
 
+import Hibernate.Tables.Storage_Type;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -30,13 +32,57 @@ public abstract class Manager<Class> {
     }
 
     public void Insert(String tableName, Class newItem) {
-        Connect(tableName);
+        try {
+            if (newItem.getClass().getName().equals(tableName)) {
+                Connect(tableName);
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(newItem);
-        entityManager.getTransaction().commit();
+                entityManager.getTransaction().begin();
+                entityManager.persist(newItem);
+                entityManager.getTransaction().commit();
 
-        Disconnect();
+                Disconnect();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Mauvaise table utilisée.");
+        }
+
+    }
+
+    public void Merge(String tableName, Class itemToUpdate) {
+        try {
+            if (itemToUpdate.getClass().getName().equals(tableName)) {
+                Connect(tableName);
+
+                entityManager.getTransaction().begin();
+                entityManager.merge(itemToUpdate);
+                entityManager.getTransaction().commit();
+
+                Disconnect();
+            }
+        }
+        catch (Exception e){
+            System.out.println("Mauvaise table utilisée.");
+        }
+    }
+
+    public void Remove(String tableName, Class itemToRemove) {
+        try {
+            if (itemToRemove.getClass().getName().equals(tableName)) {
+                Connect(tableName);
+
+                Connect(Storage_Type.class.getName());
+
+                entityManager.getTransaction().begin();
+                entityManager.remove(entityManager.contains(itemToRemove) ? itemToRemove : entityManager.merge(itemToRemove));
+                entityManager.getTransaction().commit();
+
+                Disconnect();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Mauvaise table utilisée.");
+        }
     }
 
     void Disconnect() {

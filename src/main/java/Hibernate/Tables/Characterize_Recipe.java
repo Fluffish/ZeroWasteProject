@@ -3,10 +3,15 @@ package Hibernate.Tables;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Caracterize_recipe")
-public class Caracterize_Recipe {
+@Table(name = "Characterize_recipe")
+public class Characterize_Recipe {
     private Integer id_recipe;
     private Integer id_recipe_type;
+
+    public Characterize_Recipe(Integer id_recipe, Integer id_recipe_type) {
+        this.id_recipe = id_recipe;
+        this.id_recipe_type = id_recipe_type;
+    }
 
     @Id
     @Column(name = "id_recipe")

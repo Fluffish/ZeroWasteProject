@@ -10,6 +10,11 @@ public class Recipe_Type {
     private Integer id_recipe_type;
     private String recipe_type_name;
 
+    public Recipe_Type(Integer id_recipe_type, String recipe_type_name) {
+        this.id_recipe_type = id_recipe_type;
+        this.recipe_type_name = recipe_type_name;
+    }
+
     @Id
     @Column(name = "id_recipe_type")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

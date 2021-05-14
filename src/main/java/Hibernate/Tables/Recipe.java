@@ -11,6 +11,18 @@ public class Recipe {
     private Integer id_recipe;
     private String recipe_name;
 
+    public Recipe() {
+    }
+
+    public Recipe(String recipe_name) {
+        this.recipe_name = recipe_name;
+    }
+
+    public Recipe(Integer id_recipe, String recipe_name) {
+        this.id_recipe = id_recipe;
+        this.recipe_name = recipe_name;
+    }
+
     @Id
     @Column(name = "id_recipe")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
