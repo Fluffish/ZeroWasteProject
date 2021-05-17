@@ -1,11 +1,16 @@
+import Hibernate.Tables.Users;
 import Hibernate.TablesManager.StorageTypeManager;
+import Hibernate.TablesManager.UserPossessManager;
+import Hibernate.TablesManager.UsersManager;
 
 public class TestInsert {
 
     public static void main(String[] args) {
 
-        StorageTypeManager storageTypeManager = new StorageTypeManager();
-        System.out.println(storageTypeManager.FindStorageById(2).getStorage_name());
+        UsersManager usersManager = new UsersManager();
 
+        Users newUser = new Users("Florent", "Password" ,"Mail@zerowaste.com", "06.06.06.06.06", 150, 0);
+
+        usersManager.Insert(Users.class.getName(), newUser);
     }
 }
