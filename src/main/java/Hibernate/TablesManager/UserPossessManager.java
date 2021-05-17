@@ -18,4 +18,29 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
+    //TODO : CORRECT SQLQUERY WITH DATE COMPARISON.
+    public List<Integer> FindVeryLimitedFood() {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < CURRENT_TIMESTAMP + 7";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (User_Possess food : foodFound) {
+            result.add(food.getId_food());
+        }
+        return result;
+    }
+
+    public List<Integer> FindLimitedFood() {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < CURRENT_TIMESTAMP + 14 and x.food_limit_date > CURRENT_TIMESTAMP + 7";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (User_Possess food : foodFound) {
+            result.add(food.getId_food());
+        }
+        return result;
+    }
+
 }
