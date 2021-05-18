@@ -38,4 +38,7 @@ public class Session {
         this.user = null;
         this.connected = false;
     }
+    public Boolean isConnected(){
+        return connected;
+    }
 }
