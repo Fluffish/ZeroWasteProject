@@ -1,16 +1,23 @@
-import Hibernate.Tables.Users;
-import Hibernate.TablesManager.StorageTypeManager;
+import Hibernate.AppUtils;
+import Hibernate.Tables.User_Possess;
 import Hibernate.TablesManager.UserPossessManager;
-import Hibernate.TablesManager.UsersManager;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 public class TestInsert {
 
     public static void main(String[] args) {
 
-        UsersManager usersManager = new UsersManager();
+        Timestamp testLimit = Timestamp.valueOf("2021-07-23 00:00:00");
+        Timestamp testAdd = Timestamp.valueOf("2021-05-18 00:00:00");
+/*
+        UserPossessManager userPossessManager = new UserPossessManager();
+        List<User_Possess> test = userPossessManager.FindVeryLimitedFood();
 
-        Users newUser = new Users("Florent", "Password" ,"Mail@zerowaste.com", "06.06.06.06.06", 150, 0);
-
-        usersManager.Insert(Users.class.getName(), newUser);
+        for(User_Possess x : test) {
+            System.out.println(x.getId_food());
+        }
+        */
     }
 }
