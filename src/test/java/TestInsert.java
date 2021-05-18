@@ -1,3 +1,4 @@
+import connectionManager.PasswordAuthentication;
 import Hibernate.AppUtils;
 import Hibernate.Tables.User_Possess;
 import Hibernate.TablesManager.UserPossessManager;
@@ -8,16 +9,12 @@ import java.util.List;
 public class TestInsert {
 
     public static void main(String[] args) {
+        PasswordAuthentication passwordAuthentication = new PasswordAuthentication(10);
 
-        Timestamp testLimit = Timestamp.valueOf("2021-07-23 00:00:00");
-        Timestamp testAdd = Timestamp.valueOf("2021-05-18 00:00:00");
-/*
-        UserPossessManager userPossessManager = new UserPossessManager();
-        List<User_Possess> test = userPossessManager.FindVeryLimitedFood();
 
-        for(User_Possess x : test) {
-            System.out.println(x.getId_food());
-        }
-        */
+        char[] password0 = {'m', 'a', 'y', 'u', 's'};
+        char[] password1 = {'m', 'a', 'y', 'a', 's'};
+
+        System.out.println(passwordAuthentication.authenticate(password0, passwordAuthentication.hash(password1)));
     }
 }
