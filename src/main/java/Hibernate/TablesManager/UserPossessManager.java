@@ -1,6 +1,9 @@
 package Hibernate.TablesManager;
 
 import Hibernate.Tables.User_Possess;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class UserPossessManager extends Manager<User_Possess> {
     }
 
     //TODO : CORRECT SQLQUERY WITH DATE COMPARISON.
-    public List<Integer> FindVeryLimitedFood() {
+    public List<User_Possess> FindVeryLimitedFood() {
         String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < CURRENT_TIMESTAMP + 7";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
@@ -28,7 +31,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         for (User_Possess food : foodFound) {
             result.add(food.getId_food());
         }
-        return result;
+        return foodFound;
     }
 
     public List<Integer> FindLimitedFood() {
