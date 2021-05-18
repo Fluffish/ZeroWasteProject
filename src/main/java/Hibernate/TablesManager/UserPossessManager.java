@@ -1,6 +1,9 @@
 package Hibernate.TablesManager;
 
+import Hibernate.AppUtils;
 import Hibernate.Tables.User_Possess;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,4 +21,42 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
+    public List<Integer> FindVeryLimitedFood() {
+        Timestamp veryLimited = AppUtils.getTimestampForOneWeekAway();
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + veryLimited +"'";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (User_Possess food : foodFound) {
+            result.add(food.getId_food());
+        }
+        return result;
+    }
+
+    public List<Integer> FindLimitedFood() {
+        Timestamp limited = AppUtils.getTimestampForTwoWeeksAway();
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + limited +"'";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (User_Possess food : foodFound) {
+            result.add(food.getId_food());
+        }
+        return result;
+    }
+
+    public List<Integer> FindNotUrgentFood() {
+        Timestamp limited = AppUtils.getTimestampForTwoWeeksAway();
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date > '" + limited + "'";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        List<Integer> result = new ArrayList<>();
+
+        for (User_Possess food : foodFound) {
+            result.add(food.getId_food());
+        }
+        return result;
+    }
 }

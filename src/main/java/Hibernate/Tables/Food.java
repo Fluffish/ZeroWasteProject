@@ -9,18 +9,15 @@ import javax.persistence.*;
 public class Food {
     private Integer id_food;
     private String food_name;
-    private Integer id_food_type;
 
 
     public Food(String food_name, Integer id_food_type) {
         this.food_name = food_name;
-        this.id_food_type = id_food_type;
     }
 
-    public Food(Integer id_food, String food_name, Integer id_food_type) {
+    public Food(Integer id_food, String food_name) {
         this.id_food = id_food;
         this.food_name = food_name;
-        this.id_food_type = id_food_type;
     }
 
     @Id
@@ -42,15 +39,5 @@ public class Food {
 
     public void setFood_name(String food_name) {
         this.food_name = food_name;
-    }
-
-    @Column(name = "id_food_type")
-    @NotNull
-    public Integer getId_food_type() {
-        return id_food_type;
-    }
-
-    public void setId_food_type(Integer id_food_type) {
-        this.id_food_type = id_food_type;
     }
 }
