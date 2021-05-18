@@ -1,18 +1,16 @@
 package Hibernate.Tables;
 
 import com.sun.istack.NotNull;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "food")
 public class Food {
     private Integer id_food;
     private String food_name;
     private Integer id_food_type;
 
-    public Food() {
-    }
 
     public Food(String food_name, Integer id_food_type) {
         this.food_name = food_name;

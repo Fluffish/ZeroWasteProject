@@ -25,9 +25,9 @@ public class PasswordAuthentication {
 
     private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
 
-    private static final int SIZE = 128;
+    private static final int SIZE = 64;
 
-    private static final Pattern layout = Pattern.compile("\\$31\\$(\\d\\d?)\\$(.{43})");
+    private static final Pattern layout = Pattern.compile("\\$31\\$(\\d\\d?)\\$(.{22})");
 
     private final SecureRandom random;
 

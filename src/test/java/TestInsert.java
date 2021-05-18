@@ -1,13 +1,12 @@
 import connectionManager.PasswordAuthentication;
+import connectionManager.Session;
+
 
 public class TestInsert {
 
     public static void main(String[] args) {
-        PasswordAuthentication passwordAuthentication = new PasswordAuthentication(10);
 
-        char[] password0 = {'m', 'a', 'y', 'u', 's'};
-        char[] password1 = {'m', 'a', 'y', 'a', 's'};
+        Session newSession = new Session("Mayas", "supermayas123");
 
-        System.out.println(passwordAuthentication.authenticate(password0, passwordAuthentication.hash(password1)));
     }
 }
