@@ -1,8 +1,8 @@
-import Hibernate.Tables.*;
-import Hibernate.TablesManager.*;
+import Hibernate.AppUtils;
+import Hibernate.Tables.User_Possess;
+import Hibernate.TablesManager.UserPossessManager;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class TestInsert {
@@ -19,14 +19,5 @@ public class TestInsert {
             System.out.println(x.getId_food());
         }
         */
-
-        Timestamp time = Timestamp.valueOf(LocalDateTime.now());
-        System.out.println(time.toString());
-        String timeString = time.toString();
-        String[] timeLines = timeString.split(" ");
-        String[] timeDate = timeLines[0].split("-");
-        int day = Integer.parseInt(timeDate[2]);
-        day = day + 7;
-
     }
 }
