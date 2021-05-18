@@ -1,11 +1,13 @@
-import Hibernate.TablesManager.StorageTypeManager;
+import connectionManager.PasswordAuthentication;
 
 public class TestInsert {
 
     public static void main(String[] args) {
+        PasswordAuthentication passwordAuthentication = new PasswordAuthentication(10);
 
-        StorageTypeManager storageTypeManager = new StorageTypeManager();
-        System.out.println(storageTypeManager.FindStorageById(2).getStorage_name());
+        char[] password0 = {'m', 'a', 'y', 'u', 's'};
+        char[] password1 = {'m', 'a', 'y', 'a', 's'};
 
+        System.out.println(passwordAuthentication.authenticate(password0, passwordAuthentication.hash(password1)));
     }
 }
