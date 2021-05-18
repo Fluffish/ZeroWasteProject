@@ -3,7 +3,7 @@ package Hibernate.Tables;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Characterize_recipe")
+@Table(name = "characterize_recipe")
 public class Characterize_Recipe {
     private Integer id_recipe;
     private Integer id_recipe_type;
