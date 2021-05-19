@@ -28,7 +28,7 @@ public class FoodManager extends Manager<Food> {
         Connect(Food.class.getName());
 
         entityManager.getTransaction().begin();
-        Food food = entityManager.find(Food.class,id_food);
+        Food food = entityManager.find(Food.class, id_food);
         entityManager.getTransaction().commit();
 
         Disconnect();

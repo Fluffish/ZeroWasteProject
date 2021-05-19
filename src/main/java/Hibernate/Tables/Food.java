@@ -10,8 +10,6 @@ public class Food {
     private Integer id_food;
     private String food_name;
 
-    public Food() {
-    }
 
     public Food(String food_name, Integer id_food_type) {
         this.food_name = food_name;

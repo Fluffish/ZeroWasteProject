@@ -5,6 +5,8 @@ import Hibernate.TablesManager.UsersManager;
 
 public class Session {
 
+    private static PasswordAuthentication PASSWORDAUTHENTICATION = new PasswordAuthentication();
+
     private Users user;
     private boolean connected;
 
@@ -15,9 +17,11 @@ public class Session {
 
     public Session(String username, String password) {
         UsersManager usersManager = new UsersManager();
+        char[] passwordToCharArray = password.toCharArray();
 
         if(usersManager.usernameAlreadyUsed(username)) {
-            if (usersManager.getUsers(username).getPassword().equals(password)) {
+            if (PASSWORDAUTHENTICATION.authenticate(passwordToCharArray,
+                                                    usersManager.getUsers(username).getPassword())) {
                 this.user = usersManager.getUsers(username);
                 this.connected = true;
             } else {
@@ -33,5 +37,8 @@ public class Session {
     public void disconnect() {
         this.user = null;
         this.connected = false;
+    }
+    public Boolean isConnected(){
+        return connected;
     }
 }

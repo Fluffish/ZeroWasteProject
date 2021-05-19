@@ -5,6 +5,8 @@ import Hibernate.TablesManager.UsersManager;
 
 public class SignUp {
 
+    private static PasswordAuthentication PASSWORDAUTHENTICATION = new PasswordAuthentication();
+
     public static boolean createUser(String username,
                                   String password,
                                   String mail_user,
@@ -17,7 +19,11 @@ public class SignUp {
             return false;
         }
 
-        Users newUser = new Users(username, password, mail_user, tel_user, user_max_budget, user_current_budget);
+        char[] passwordToCharArray = password.toCharArray();
+
+        String hashedPassword = PASSWORDAUTHENTICATION.hash(passwordToCharArray);
+
+        Users newUser = new Users(username, hashedPassword, mail_user, tel_user, user_max_budget, user_current_budget);
 
         usersManager.Insert(Users.class.getName(), newUser);
 
