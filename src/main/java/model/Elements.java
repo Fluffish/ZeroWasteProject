@@ -11,6 +11,11 @@ public abstract class Elements<T> {
         this.elements = new ArrayList<T>(0);
 
     }
+    public Elements() {
+        this.name = null;
+        this.elements = new ArrayList<T>(0);
+
+    }
 
     public void add(T element) {
         elements.add(element);
