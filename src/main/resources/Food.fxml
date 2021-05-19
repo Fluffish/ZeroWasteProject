@@ -59,7 +59,7 @@
       <TextField layoutX="276.0" layoutY="241.0" />
       <Label layoutX="275.0" layoutY="218.0" prefHeight="17.0" prefWidth="177.0" text="Date limite" />
       <Button layoutX="575.0" layoutY="74.0" mnemonicParsing="false" onAction="#MainPage" opacity="0.59" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: orange; -fx-border-color: white;" text="page principale" textFill="#fffdfd" />
-      <Button layoutX="622.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="25.0" prefWidth="63.0" text="Fermer">
+      <Button layoutX="622.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="25.0" prefWidth="63.0" text="Quitter">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

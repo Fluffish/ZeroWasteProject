@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.Controller">
    <children>
       <ImageView fitHeight="400.0" fitWidth="700.0" opacity="0.22" pickOnBounds="true" smooth="false">
@@ -22,30 +21,26 @@
          </font>
       </Label>
       <ListView layoutX="36.0" layoutY="93.0" prefHeight="275.0" prefWidth="115.0" />
-      <ListView layoutX="188.0" layoutY="93.0" prefHeight="275.0" prefWidth="115.0" />
-      <ListView layoutX="323.0" layoutY="93.0" prefHeight="275.0" prefWidth="125.0" />
-      <ListView layoutX="462.0" layoutY="93.0" prefHeight="275.0" prefWidth="135.0" />
       <Label layoutX="39.0" layoutY="76.0" prefHeight="17.0" prefWidth="135.0" text="Personnes inscrites :" underline="true" />
-      <Label layoutX="191.0" layoutY="76.0" prefHeight="17.0" prefWidth="135.0" text="Aliments enregistrés :" underline="true" />
-      <Label layoutX="323.0" layoutY="76.0" prefHeight="17.0" prefWidth="135.0" text="Stockages enregistrés :" underline="true" />
-      <Label layoutX="462.0" layoutY="76.0" prefHeight="17.0" prefWidth="135.0" text="Recettes enregistrées :" underline="true" />
-      <Button layoutX="63.0" layoutY="375.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="25.0" text="+" />
-      <Button layoutX="94.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="-" />
-      <Button layoutX="220.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="+" />
-      <Button layoutX="252.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="-" />
-      <Button layoutX="356.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="+" />
-      <Button layoutX="386.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="-" />
-      <Button layoutX="504.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+" />
-      <Button layoutX="535.0" layoutY="375.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="25.0" text="-" />
+      <Label layoutX="181.0" layoutY="76.0" prefHeight="17.0" prefWidth="115.0" text="Aliments enregistrés :" underline="true" />
+      <Label layoutX="324.0" layoutY="76.0" prefHeight="17.0" prefWidth="123.0" text="Stockages enregistrés :" underline="true" />
+      <Label layoutX="477.0" layoutY="76.0" prefHeight="17.0" prefWidth="123.0" text="Recettes enregistrées :" underline="true" />
+      <Button layoutX="57.0" layoutY="370.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Supprimer" />
       <Label layoutX="34.0" layoutY="39.0" prefHeight="21.0" prefWidth="205.0" text="Welcome dear Admin ♡">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="617.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="25.0" prefWidth="63.0" text="Fermer">
+      <Button layoutX="617.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="25.0" prefWidth="63.0" text="Quitter">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Button layoutX="202.0" layoutY="370.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Supprimer" />
+      <Button layoutX="349.0" layoutY="370.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Supprimer" />
+      <Button layoutX="502.0" layoutY="370.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="73.0" text="Supprimer" />
+      <ListView layoutX="181.0" layoutY="93.0" prefHeight="275.0" prefWidth="115.0" />
+      <ListView layoutX="328.0" layoutY="93.0" prefHeight="275.0" prefWidth="115.0" />
+      <ListView layoutX="481.0" layoutY="93.0" prefHeight="275.0" prefWidth="115.0" />
    </children>
 </AnchorPane>

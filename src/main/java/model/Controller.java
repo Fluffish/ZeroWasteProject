@@ -21,9 +21,12 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public void handleCloseButtonAction(javafx.event.ActionEvent event) {
+    public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
+        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.close();
+        scene = new Scene(main_page);
+        stage.setScene(scene);
+        stage.show();
     }
 
 

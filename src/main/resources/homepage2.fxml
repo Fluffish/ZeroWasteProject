@@ -84,10 +84,5 @@
          </font>
       </PasswordField>
       <Button layoutX="150.0" layoutY="286.0" mnemonicParsing="false" onAction="#SignInButtonAction" opacity="0.61" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: white; -fx-border-color: #008000;" text="Se connecter" textFill="ORANGE" />
-      <Button layoutX="13.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="7.0" prefWidth="49.0" text="Fermer">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
