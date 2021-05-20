@@ -1,6 +1,6 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Recipe;
+import model.Hibernate.Tables.Recipe;
 
 public class RecipeManager extends Manager<Recipe> {
 

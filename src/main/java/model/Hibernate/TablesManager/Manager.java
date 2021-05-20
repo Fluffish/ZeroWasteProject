@@ -1,6 +1,6 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Storage_Type;
+import model.Hibernate.Tables.Storage_Type;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

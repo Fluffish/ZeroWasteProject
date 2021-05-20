@@ -1,4 +1,4 @@
-package Hibernate.Tables;
+package model.Hibernate.Tables;
 
 import com.sun.istack.NotNull;
 

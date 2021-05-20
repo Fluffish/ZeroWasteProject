@@ -1,4 +1,4 @@
-package Hibernate.Tables;
+package model.Hibernate.Tables;
 
 import com.sun.istack.NotNull;
 
@@ -10,8 +10,10 @@ public class Food {
     private Integer id_food;
     private String food_name;
 
+    public Food() {
+    }
 
-    public Food(String food_name, Integer id_food_type) {
+    public Food(String food_name) {
         this.food_name = food_name;
     }
 

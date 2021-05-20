@@ -1,4 +1,4 @@
-package connectionManager;
+package model.connectionManager;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

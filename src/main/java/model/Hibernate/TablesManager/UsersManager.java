@@ -1,6 +1,6 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Users;
+import model.Hibernate.Tables.Users;
 
 import java.util.List;
 

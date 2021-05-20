@@ -1,7 +1,7 @@
-package connectionManager;
+package model.connectionManager;
 
-import Hibernate.Tables.Users;
-import Hibernate.TablesManager.UsersManager;
+import model.Hibernate.Tables.Users;
+import model.Hibernate.TablesManager.UsersManager;
 
 public class SignUp {
 

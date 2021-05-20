@@ -1,7 +1,7 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Use_Food;
-import Hibernate.Tables.User_Possess;
+import model.Hibernate.Tables.Use_Food;
+
 import java.util.ArrayList;
 import java.util.List;
 

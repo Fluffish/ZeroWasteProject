@@ -1,7 +1,7 @@
-package connectionManager;
+package model.connectionManager;
 
-import Hibernate.Tables.Users;
-import Hibernate.TablesManager.UsersManager;
+import model.Hibernate.Tables.Users;
+import model.Hibernate.TablesManager.UsersManager;
 
 public class Session {
 
@@ -34,11 +34,16 @@ public class Session {
         }
     }
 
+    public Users getUser() {
+        return user;
+    }
+
+    public boolean isConnected() {
+        return connected;
+    }
+
     public void disconnect() {
         this.user = null;
         this.connected = false;
-    }
-    public Boolean isConnected(){
-        return connected;
     }
 }

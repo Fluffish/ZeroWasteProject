@@ -1,9 +1,16 @@
 package model;
 
-import Hibernate.Tables.Food;
+import model.Hibernate.Tables.Food;
 
 public class Storage extends Elements<Food> {
-    public Storage() {
+    protected int idStorage;
+
+    public Storage(int idStorage) {
         super();
+        this.idStorage = idStorage;
+    }
+
+    public int getIdStorage() {
+        return idStorage;
     }
 }

@@ -1,7 +1,7 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.AppUtils;
-import Hibernate.Tables.User_Possess;
+import model.Hibernate.AppUtils;
+import model.Hibernate.Tables.User_Possess;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
     public List<Integer> FindDistinctStorages(Integer id_user) {
-        String sqlQuery = "SELECT Distinct id_storage FROM User_Possess x WHERE x.id_user = " + id_user;
+        String sqlQuery = "SELECT DISTINCT id_storage FROM User_Possess WHERE id_user = " + id_user;
         List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -29,6 +29,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         for (User_Possess possess : possessedStorage) {
             result.add(possess.getId_storage());
         }
+
         return result;
     }
 

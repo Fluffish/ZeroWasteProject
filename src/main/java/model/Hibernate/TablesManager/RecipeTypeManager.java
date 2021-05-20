@@ -1,6 +1,6 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Recipe_Type;
+import model.Hibernate.Tables.Recipe_Type;
 import java.util.ArrayList;
 import java.util.List;
 

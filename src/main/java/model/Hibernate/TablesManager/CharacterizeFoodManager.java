@@ -1,4 +1,4 @@
-package Hibernate.TablesManager;
+package model.Hibernate.TablesManager;
 
 import Hibernate.Tables.Characterize_Food;
 
