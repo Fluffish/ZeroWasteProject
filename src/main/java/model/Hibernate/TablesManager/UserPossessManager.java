@@ -21,7 +21,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
     public List<Integer> FindDistinctStorages(Integer id_user) {
-        String sqlQuery = "SELECT DISTINCT id_storage FROM User_Possess WHERE id_user = " + id_user;
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user +"'group by id_storage" ;
         List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -34,7 +34,7 @@ public class UserPossessManager extends Manager<User_Possess> {
     }
 
     public List<Integer> FindFood(int id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_food= '" + id_storage + "'";
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage= '" + id_storage + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
