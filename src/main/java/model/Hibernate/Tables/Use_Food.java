@@ -15,6 +15,10 @@ public class Use_Food {
         this.quantity = quantity;
     }
 
+    public Use_Food() {
+
+    }
+
     @Id
     @Column(name = "id_recipe")
     public Integer getId_recipe() {

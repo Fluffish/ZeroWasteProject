@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "food_type")
+@Table(name = "recipe")
 public class Recipe {
 
     private Integer id_recipe;

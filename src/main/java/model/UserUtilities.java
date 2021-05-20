@@ -17,6 +17,7 @@ public class UserUtilities {
     private static final FoodManager FOOD_MANAGER = new FoodManager();
     private static final RecipeManager RECIPE_MANAGER = new RecipeManager();
     private static final RecipeTypeManager RECIPE_TYPE_MANAGER = new RecipeTypeManager();
+    private static final CharacterizeRecipeManager CHARACTERIZE_RECIPE_MANAGER = new CharacterizeRecipeManager();
     private static final UseFoodManager USE_FOOD_MANAGER = new UseFoodManager();
     private static final Food EMPTY_STORAGE = new Food(1, "null");
 
@@ -128,5 +129,16 @@ public class UserUtilities {
         }
 
         return availableRecipes;
+    }
+
+    public static List<String> getRecipeType(int idRecipe) {
+        List<Integer> idsRecipeType = CHARACTERIZE_RECIPE_MANAGER.findTypeByIdRecipe(idRecipe);
+        List<String> recipeType = new ArrayList<>(0);
+
+        for (int idRecipeType : idsRecipeType) {
+            recipeType.add(RECIPE_TYPE_MANAGER.findTypeById(idRecipeType).get(0));
+        }
+
+        return recipeType;
     }
 }

@@ -9,7 +9,7 @@ public class RecipeManager extends Manager<Recipe> {
 
     public List<Recipe> GetAllRecipe() {
         String sqlQuery = "SELECT x FROM Recipe x";
-        List<Recipe> recipes = MakeQuery(Food.class.getName(), sqlQuery);
+        List<Recipe> recipes = MakeQuery(Recipe.class.getName(), sqlQuery);
 
         return recipes;
     }
