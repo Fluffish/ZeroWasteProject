@@ -33,8 +33,8 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
-    public List<Integer> FindFood(int id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_food= '" + id_storage + "'";
+    public List<Integer> FindFood(Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage= '" + id_storage + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -46,9 +46,9 @@ public class UserPossessManager extends Manager<User_Possess> {
     }
 
 
-    public List<Integer> FindVeryLimitedFood() {
+    public List<Integer> FindVeryLimitedFood(Integer id_user) {
         Timestamp veryLimited = AppUtils.getTimestampForOneWeekAway();
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + veryLimited +"'";
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + veryLimited +"' AND x.id_user = '" + id_user + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
