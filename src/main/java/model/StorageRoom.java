@@ -5,6 +5,15 @@ public class StorageRoom extends Elements<Storage> {
         super();
     }
 
+    public boolean containsFood(int idFood) {
+        for (Storage storage : elements) {
+            if (storage.contains(idFood))
+                return true;
+        }
+
+        return false;
+    }
+
     @Override
     public String toString() {
         return "StorageRoom{" +
