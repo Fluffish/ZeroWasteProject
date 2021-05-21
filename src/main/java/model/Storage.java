@@ -10,15 +10,6 @@ public class Storage extends Elements<Food> {
         this.idStorage = idStorage;
     }
 
-    public boolean contains(int idFood) {
-        for (Food food : elements) {
-            if (food.getId_food() == idFood)
-                return true;
-        }
-
-        return false;
-    }
-
     public int getIdStorage() {
         return idStorage;
     }

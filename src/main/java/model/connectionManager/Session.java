@@ -2,6 +2,7 @@ package model.connectionManager;
 
 import model.Hibernate.Tables.Users;
 import model.Hibernate.TablesManager.UsersManager;
+import model.UserUtilities;
 
 public class Session {
 
@@ -10,9 +11,13 @@ public class Session {
     private Users user;
     private boolean connected;
 
+    public UserUtilities utilities;
+
     public Session() {
         this.user = null;
         this.connected = false;
+
+        this.utilities = null;
     }
 
     public Session(String username, String password) {
@@ -24,6 +29,7 @@ public class Session {
                                                     usersManager.getUsers(username).getPassword())) {
                 this.user = usersManager.getUsers(username);
                 this.connected = true;
+                this.utilities = new UserUtilities(user);
             } else {
                 this.user = null;
                 this.connected = false;

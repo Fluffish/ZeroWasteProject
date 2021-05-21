@@ -12,21 +12,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserUtilities {
-    private static final UsersManager USERS_MANAGER = new UsersManager();
-    private static final UserPossessManager USER_POSSESS_MANAGER = new UserPossessManager();
-    private static final FoodManager FOOD_MANAGER = new FoodManager();
-    private static final RecipeManager RECIPE_MANAGER = new RecipeManager();
-    private static final RecipeTypeManager RECIPE_TYPE_MANAGER = new RecipeTypeManager();
-    private static final CharacterizeRecipeManager CHARACTERIZE_RECIPE_MANAGER = new CharacterizeRecipeManager();
-    private static final UseFoodManager USE_FOOD_MANAGER = new UseFoodManager();
-    private static final Food EMPTY_STORAGE = new Food(1, "null");
+    private final UsersManager USERS_MANAGER = new UsersManager();
+    private final UserPossessManager USER_POSSESS_MANAGER = new UserPossessManager();
+    private final FoodManager FOOD_MANAGER = new FoodManager();
+    private final RecipeManager RECIPE_MANAGER = new RecipeManager();
+    private final RecipeTypeManager RECIPE_TYPE_MANAGER = new RecipeTypeManager();
+    private final CharacterizeRecipeManager CHARACTERIZE_RECIPE_MANAGER = new CharacterizeRecipeManager();
+    private final UseFoodManager USE_FOOD_MANAGER = new UseFoodManager();
+    private final Food EMPTY_STORAGE = new Food(1, "null");
 
-    public static void addUserStorage(Users user, int idStorage) {
-        addUserPossess(user, idStorage, EMPTY_STORAGE.getId_food(), "1",
-                Timestamp.valueOf(LocalDateTime.now()), 0f);
+    protected StorageRoom storageRoom;
+    protected Users user;
+
+    public UserUtilities(Users user) {
+        this.user = user;
+        this.storageRoom = getUserStorages(user);
     }
 
-    public static void addUserPossess(Users user, int idStorage, int idFood, String quantity,
+    public void addUserStorage(int idStorage) {
+        User_Possess newUserPosses = new User_Possess(user.getId_user(), idStorage, EMPTY_STORAGE.getId_food(),
+                "1", Timestamp.valueOf(LocalDateTime.now()),
+                Timestamp.valueOf(LocalDateTime.now()), 0f);
+
+        USER_POSSESS_MANAGER.Insert(User_Possess.class.getName(), newUserPosses);
+
+        storageRoom.add(idStorage, new Storage(idStorage));
+    }
+
+    public StorageRoom getUserStorages(Users user) {
+        List<Integer> userStorages = USER_POSSESS_MANAGER.FindDistinctStorages(user.getId_user());
+
+        StorageRoom storageRoom = new StorageRoom();
+
+        for (int idStorage : userStorages){
+            Storage storage = new Storage(idStorage);
+            List<Integer> foods = USER_POSSESS_MANAGER.FindFood(idStorage);
+            for (int idFood : foods){
+                if (idFood != 1)
+                    storage.add(idFood, FOOD_MANAGER.FindFoodById(idFood));
+            }
+            storageRoom.add(idStorage, storage);
+        }
+
+        return storageRoom;
+    }
+
+    public StorageRoom getStorageRoom() {
+        return storageRoom;
+    }
+
+    public void addUserPossess(int idStorage, int idFood, String quantity,
                                       Timestamp expirationDate, float price) {
         User_Possess newUserPosses = new User_Possess(user.getId_user(), idStorage, idFood,
                                                       quantity, expirationDate,
@@ -34,62 +69,50 @@ public class UserUtilities {
 
         USER_POSSESS_MANAGER.Insert(User_Possess.class.getName(), newUserPosses);
 
+        storageRoom.getElement(idStorage).add(idFood, FOOD_MANAGER.FindFoodById(idFood));
+
         user.setUser_current_budget((int) (user.getUser_current_budget() - price));
 
         USERS_MANAGER.Merge(Users.class.getName(), user);
     }
 
-    public static void removeFoodUserPossess(Users user, int idFood, int idStorage) {
+    public void removeFoodUserPossess(int idFood, int idStorage) {
         User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(user.getId_user(), idFood, idStorage);
 
         USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), user_possess);
+
+        storageRoom.getElement(idStorage).remove(idFood);
     }
 
-    public static void removeStorageUserPossess(Users user, int idStorage, StorageRoom storageRoom) {
+    public void removeStorageUserPossess(int idStorage) {
         List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectStorage(user.getId_user(), idStorage);
 
         for (User_Possess selectedUserPossess : selectedUserPossesses){
-            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
+            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), selectedUserPossess);
         }
 
-
+        storageRoom.remove(idStorage);
     }
 
-    public static void setEmptyStorage(Users user, int idStorage) {
+    public void setEmptyStorage(int idStorage) {
         List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectUserPossessFullStorage(user.getId_user(), idStorage);
 
         for (User_Possess selectedUserPossess : selectedUserPossesses){
             USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
         }
+
+        storageRoom.getElement(idStorage).clear();
     }
 
-    public static StorageRoom getUserStorages(Users user) {
-        List<Integer> userStorages = USER_POSSESS_MANAGER.FindDistinctStorages(user.getId_user());
-
-        StorageRoom storageRoom = new StorageRoom();
-
-        for (int id_storage : userStorages){
-            Storage storage = new Storage(id_storage);
-            List<Integer> foods = USER_POSSESS_MANAGER.FindFood(id_storage);
-            for (int id_food : foods){
-                if (id_food != 1)
-                    storage.add(FOOD_MANAGER.FindFoodById(id_food));
-            }
-            storageRoom.add(storage);
-        }
-
-        return storageRoom;
+    public float getRemainingBudget() {
+        return user.getUser_current_budget();
     }
 
-    public static float getRemainingBudget(Users users) {
-        return users.getUser_current_budget();
-    }
-
-    public static List<Food> getAllFood(Users user, StorageRoom storageRoom) {
+    public List<Food> getAllFood() {
         List<Food> food = new ArrayList<Food>(0);
 
-        for (Storage storage : storageRoom.elements) {
-            for (Food foodProduct : storage.elements) {
+        for (Storage storage : storageRoom.values()) {
+            for (Food foodProduct : storage.values()) {
                 food.add(foodProduct);
             }
         }
@@ -97,7 +120,7 @@ public class UserUtilities {
         return food;
     }
 
-    public static List<Food> getVeryLimitedFood(Users user) {
+    public List<Food> getVeryLimitedFood() {
         List<Food> veryLimitedFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindVeryLimitedFood(user.getId_user());
 
@@ -109,7 +132,7 @@ public class UserUtilities {
         return veryLimitedFood;
     }
 
-    public static List<Food> getLimitedFood(Users user) {
+    public List<Food> getLimitedFood() {
         List<Food> limitedFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindLimitedFood(user.getId_user());
 
@@ -121,7 +144,7 @@ public class UserUtilities {
         return limitedFood;
     }
 
-    public static List<Food> getNotUrgentFood(Users user) {
+    public List<Food> getNotUrgentFood() {
         List<Food> nonUrgentFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindNotUrgentFood(user.getId_user());
 
@@ -133,7 +156,7 @@ public class UserUtilities {
         return nonUrgentFood;
     }
 
-    public static List<Recipe> getAvailableRecipes(Users user, StorageRoom storageRoom) {
+    public List<Recipe> getAvailableRecipes() {
         List<Recipe> availableRecipes = new ArrayList<>(0);
         List<Recipe> recipes = RECIPE_MANAGER.GetAllRecipe();
 
@@ -155,7 +178,7 @@ public class UserUtilities {
         return availableRecipes;
     }
 
-    public static List<String> getRecipeType(int idRecipe) {
+    public List<String> getRecipeType(int idRecipe) {
         List<Integer> idsRecipeType = CHARACTERIZE_RECIPE_MANAGER.findTypeByIdRecipe(idRecipe);
         List<String> recipeType = new ArrayList<>(0);
 

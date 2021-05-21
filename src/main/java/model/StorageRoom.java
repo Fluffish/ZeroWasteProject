@@ -6,7 +6,7 @@ public class StorageRoom extends Elements<Storage> {
     }
 
     public boolean containsFood(int idFood) {
-        for (Storage storage : elements) {
+        for (Storage storage : elements.values()) {
             if (storage.contains(idFood))
                 return true;
         }
