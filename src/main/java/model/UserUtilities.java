@@ -39,6 +39,18 @@ public class UserUtilities {
         USERS_MANAGER.Merge(Users.class.getName(), user);
     }
 
+    public static void removeFoodUserPossess(Users user, int idFood, int idStorage) {
+        /* TODO */
+    }
+
+    public static void removeStorageUserPossess(Users user, int idStorage) {
+        /* TODO */
+    }
+
+    public static void setEmptyStorage(Users user, int idStorage) {
+        /* TODO */
+    }
+
     public static StorageRoom getUserStorages(Users user) {
         List<Integer> userStorages = USER_POSSESS_MANAGER.FindDistinctStorages(user.getId_user());
 
