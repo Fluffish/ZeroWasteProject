@@ -84,4 +84,15 @@ public class UserPossessManager extends Manager<User_Possess> {
         }
         return result;
     }
+
+    public List<User_Possess> selectStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage ='" + id_storage +"'and  x.id_user='" +id_user +"'";
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+        return selectedStorages;
+    }
+    public List<User_Possess> selectUserPossessFullStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage ='" + id_storage +"'and x.id_user='" +id_user+ "'and x.id_food != '1'" ;
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+        return selectedStorages;
+    }
 }

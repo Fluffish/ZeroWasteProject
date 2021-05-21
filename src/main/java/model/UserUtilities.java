@@ -44,7 +44,10 @@ public class UserUtilities {
     }
 
     public static void removeStorageUserPossess(Users user, int idStorage) {
-        /* TODO */
+        List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.selectStorage(user.getId_user(), idStorage);
+        for (User_Possess selectedUserPossess : selectedUserPossesses){
+            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
+        }
     }
 
     public static void setEmptyStorage(Users user, int idStorage) {
