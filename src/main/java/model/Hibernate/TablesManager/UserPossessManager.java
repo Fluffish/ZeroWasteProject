@@ -20,6 +20,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         }
         return result;
     }
+
     public List<Integer> FindDistinctStorages(Integer id_user) {
         String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user +"' GROUP BY id_storage" ;
         List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
@@ -33,7 +34,7 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
-    public List<Integer> FindFood(int id_storage) {
+    public List<Integer> FindFood(Integer id_storage) {
         String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
@@ -45,6 +46,29 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
+    public User_Possess FindUserPossess(Integer id_user, Integer id_food, Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user + "' AND x.id_food = '" + id_food + "' AND x.id_storage = '" + id_storage + "'";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        if (foodFound.isEmpty())
+            return null;
+
+        return foodFound.get(0);
+    }
+
+    public List<User_Possess> SelectStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage +"' AND  x.id_user = '" + id_user + "'";
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        return selectedStorages;
+    }
+
+    public List<User_Possess> SelectUserPossessFullStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage + "' AND x.id_user = '" + id_user + "' AND x.id_food != '1'";
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        return selectedStorages;
+    }
 
     public List<Integer> FindVeryLimitedFood(Integer id_user) {
         Timestamp veryLimited = AppUtils.getTimestampForOneWeekAway();
@@ -83,16 +107,5 @@ public class UserPossessManager extends Manager<User_Possess> {
             result.add(food.getId_food());
         }
         return result;
-    }
-
-    public List<User_Possess> selectStorage(Integer id_user,Integer id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage ='" + id_storage +"'and  x.id_user='" +id_user +"'";
-        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
-        return selectedStorages;
-    }
-    public List<User_Possess> selectUserPossessFullStorage(Integer id_user,Integer id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage ='" + id_storage +"'and x.id_user='" +id_user+ "'and x.id_food != '1'" ;
-        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
-        return selectedStorages;
     }
 }

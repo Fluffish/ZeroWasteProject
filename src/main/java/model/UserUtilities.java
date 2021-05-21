@@ -40,18 +40,27 @@ public class UserUtilities {
     }
 
     public static void removeFoodUserPossess(Users user, int idFood, int idStorage) {
-        /* TODO */
+        User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(user.getId_user(), idFood, idStorage);
+
+        USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), user_possess);
     }
 
-    public static void removeStorageUserPossess(Users user, int idStorage) {
-        List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.selectStorage(user.getId_user(), idStorage);
+    public static void removeStorageUserPossess(Users user, int idStorage, StorageRoom storageRoom) {
+        List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectStorage(user.getId_user(), idStorage);
+
         for (User_Possess selectedUserPossess : selectedUserPossesses){
             USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
         }
+
+
     }
 
     public static void setEmptyStorage(Users user, int idStorage) {
-        /* TODO */
+        List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectUserPossessFullStorage(user.getId_user(), idStorage);
+
+        for (User_Possess selectedUserPossess : selectedUserPossesses){
+            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
+        }
     }
 
     public static StorageRoom getUserStorages(Users user) {
