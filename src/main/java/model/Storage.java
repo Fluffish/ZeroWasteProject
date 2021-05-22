@@ -2,7 +2,7 @@ package model;
 
 import model.Hibernate.Tables.Food;
 
-public class Storage extends Elements<Food> {
+public class Storage extends ListOfElement<Food> {
     protected int idStorage;
 
     public Storage(int idStorage) {

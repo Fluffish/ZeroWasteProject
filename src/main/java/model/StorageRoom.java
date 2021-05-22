@@ -1,6 +1,6 @@
 package model;
 
-public class StorageRoom extends Elements<Storage> {
+public class StorageRoom extends ListOfElement<Storage> {
     public StorageRoom() {
         super();
     }

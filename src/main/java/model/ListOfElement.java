@@ -1,18 +1,19 @@
 package model;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
-public abstract class Elements<T> {
+public abstract class ListOfElement<T> {
     protected String name;
     protected HashMap<Integer, T> elements;
 
-    public Elements(String name) {
+    public ListOfElement(String name) {
         this.name = name;
         this.elements = new HashMap<>(0);
 
     }
-    public Elements() {
+    public ListOfElement() {
         this.name = null;
         this.elements = new HashMap<>(0);
     }
