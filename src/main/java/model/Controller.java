@@ -1,12 +1,15 @@
 package model;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -18,6 +21,29 @@ public class Controller implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    private Parent fxml;
+
+
+    @FXML
+    private TextField usernameSignIn;
+
+    @FXML
+    private TextField SignUpUsername;
+
+    @FXML
+    private PasswordField SignUpPassword;
+
+    @FXML
+    private TextField Mail;
+
+    @FXML
+    private TextField Phone;
+
+    @FXML
+    private TextField Budget;
+
+    @FXML
+    private PasswordField SignInPassword;
 
 
     @FXML
@@ -49,65 +75,9 @@ public class Controller implements Initializable {
 
     }
 
-    @FXML
-    public void StorageRedirection(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Stockage.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(homepage);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
-    public void MyFoodRediction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Food.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(homepage);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
-    public void AvailableDishes(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/dish.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(homepage);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
-    public void MyProfil(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/profil.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(homepage);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
-    public void MainPage(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(homepage);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
-    public void AskTemperature(javafx.event.ActionEvent actionEvent) throws IOException{
-
-            }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
 }

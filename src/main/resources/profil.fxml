@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.ControllerProfil">
    <children>
       <Label alignment="CENTER" layoutX="1.0" opacity="0.59" prefHeight="53.0" prefWidth="697.0" style="-fx-background-color: #008000; -fx-border-color: white; -fx-border-width: 4;" text="ZeroWaste" textFill="#f3eaea">
          <font>
@@ -48,27 +48,27 @@
       <Label layoutX="137.0" layoutY="257.0" prefHeight="17.0" prefWidth="53.0" text="Email @ :" />
       <Label layoutX="137.0" layoutY="307.0" prefHeight="17.0" prefWidth="64.0" text="Téléphone :" />
       <Label layoutX="137.0" layoutY="356.0" prefHeight="17.0" prefWidth="64.0" text="Budget :" />
-      <TextFlow layoutX="211.0" layoutY="153.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
-      <TextFlow layoutX="211.0" layoutY="350.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
-      <TextFlow layoutX="211.0" layoutY="301.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
-      <TextFlow layoutX="211.0" layoutY="251.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
-      <TextField layoutX="434.0" layoutY="155.0" />
-      <TextField layoutX="434.0" layoutY="253.0" />
-      <TextField layoutX="434.0" layoutY="303.0" />
-      <TextField layoutX="434.0" layoutY="352.0" />
-      <Button layoutX="595.0" layoutY="159.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="22.0" text="OK">
+      <TextFlow fx:id="Username" layoutX="211.0" layoutY="153.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
+      <TextFlow fx:id="Budget" layoutX="211.0" layoutY="350.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
+      <TextFlow fx:id="Phone" layoutX="211.0" layoutY="301.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
+      <TextFlow fx:id="Email" layoutX="211.0" layoutY="251.0" prefHeight="30.0" prefWidth="152.0" style="-fx-border-color: black;" />
+      <TextField fx:id="NewUsername" layoutX="434.0" layoutY="155.0" />
+      <TextField fx:id="NewEmail" layoutX="434.0" layoutY="253.0" />
+      <TextField fx:id="NewPhone" layoutX="434.0" layoutY="303.0" />
+      <TextField fx:id="NewBudget" layoutX="434.0" layoutY="352.0" />
+      <Button layoutX="595.0" layoutY="159.0" mnemonicParsing="false" onAction="#ChangeTheUsername" prefHeight="17.0" prefWidth="22.0" text="OK">
          <font>
             <Font size="7.0" />
          </font></Button>
-      <Button layoutX="596.0" layoutY="209.0" mnemonicParsing="false" text="OK">
+      <Button layoutX="596.0" layoutY="209.0" mnemonicParsing="false" onAction="#ChangeThePassword" text="OK">
          <font>
             <Font size="7.0" />
          </font></Button>
-      <Button layoutX="596.0" layoutY="258.0" mnemonicParsing="false" text="OK">
+      <Button layoutX="596.0" layoutY="258.0" mnemonicParsing="false" onAction="#ChangeTheMail" text="OK">
          <font>
             <Font size="7.0" />
          </font></Button>
-      <Button layoutX="596.0" layoutY="308.0" mnemonicParsing="false" text="OK">
+      <Button layoutX="596.0" layoutY="308.0" mnemonicParsing="false" onAction="#ChangeThePhone" text="OK">
          <font>
             <Font size="7.0" />
          </font></Button>
@@ -92,13 +92,13 @@
          </font>
       </Label>
       <Button layoutX="569.0" layoutY="74.0" mnemonicParsing="false" onAction="#MainPage" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #008000; -fx-border-color: white;" text="page principale" textFill="#fffdfd" />
-      <TextField layoutX="434.0" layoutY="204.0" />
+      <TextField fx:id="NewPassword" layoutX="434.0" layoutY="204.0" />
       <Label layoutX="434.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" text="Modifier votre mot de passe">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
-      <Button layoutX="596.0" layoutY="357.0" mnemonicParsing="false" text="OK">
+      <Button layoutX="596.0" layoutY="357.0" mnemonicParsing="false" onAction="#ChangeTheBudget" text="OK">
          <font>
             <Font size="7.0" />
          </font>
