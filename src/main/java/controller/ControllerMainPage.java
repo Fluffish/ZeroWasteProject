@@ -21,15 +21,12 @@ public class ControllerMainPage implements Initializable {
     private Scene scene;
     private Parent fxml ;
 
-<<<<<<< HEAD:src/main/java/controller/ControllerMainPage.java
     @FXML
     private ListView<?> UseImmergency;
 
     @FXML
     private ListView<?> YouCanUse;
 
-=======
->>>>>>> java_func:src/main/java/controller/Controller.java
     @FXML
     private ListView<?> UseItLater;
 
