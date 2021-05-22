@@ -1,9 +1,8 @@
 package model;
 
-import Hibernate.Tables.User_Possess;
-import Hibernate.Tables.Users;
-import Hibernate.TablesManager.FoodManager;
-import Hibernate.TablesManager.UserPossessManager;
+import model.Hibernate.Tables.Users;
+import model.Hibernate.TablesManager.FoodManager;
+import model.Hibernate.TablesManager.UserPossessManager;
 
 import java.util.List;
 
