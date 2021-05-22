@@ -104,10 +104,6 @@ public class UserUtilities {
         storageRoom.getElement(idStorage).clear();
     }
 
-    public float getRemainingBudget() {
-        return user.getUser_current_budget();
-    }
-
     public List<Food> getAllFood() {
         List<Food> food = new ArrayList<Food>(0);
 
@@ -154,6 +150,10 @@ public class UserUtilities {
         }
 
         return nonUrgentFood;
+    }
+
+    public float getRemainingBudget() {
+        return user.getUser_current_budget();
     }
 
     public List<Recipe> getAvailableRecipes() {

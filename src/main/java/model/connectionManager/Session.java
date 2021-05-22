@@ -6,6 +6,7 @@ import model.UserUtilities;
 
 public class Session {
 
+    private static UsersManager USER_MANAGER = new UsersManager();
     private static PasswordAuthentication PASSWORDAUTHENTICATION = new PasswordAuthentication();
 
     private Users user;
@@ -42,6 +43,46 @@ public class Session {
 
     public Users getUser() {
         return user;
+    }
+
+    public void changeUsername(String username) {
+        this.user.setUsername(username);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
+    }
+
+    public void changePassword(String password) {
+        char[] passwordToCharArray = password.toCharArray();
+
+        String token = PASSWORDAUTHENTICATION.hash(passwordToCharArray);
+
+        this.user.setPassword(token);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
+    }
+
+    public void changeMail(String mail) {
+        this.user.setMail_user(mail);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
+    }
+
+    public void changePhone(String phone) {
+        this.user.setTel_user(phone);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
+    }
+
+    public void changeMaxBudget(int budget) {
+        this.user.setUser_max_budget(budget);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
+    }
+
+    public void changeCurrentBudget(int budget) {
+        this.user.setUser_current_budget(budget);
+
+        USER_MANAGER.Merge(Users.class.getName(), user);
     }
 
     public boolean isConnected() {

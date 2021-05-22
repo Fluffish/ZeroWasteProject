@@ -19,8 +19,6 @@ public class Controller implements Initializable {
     private Scene scene;
     private Parent root;
 
-
-
     @FXML
     public void SignInButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent main_page = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
