@@ -10,36 +10,16 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "user_possess")
 public class User_Possess {
-    @Id
-    @Column(name = "id_user")
-    @NotNull
     private Integer id_user;
-
-    @Id
-    @Column(name = "id_storage")
-    @NotNull
     private Integer id_storage;
-
-    @Id
-    @Column(name = "id_food")
-    @NotNull
     private Integer id_food;
-
-    @Id
-    @Column(name = "quantity")
     private String quantity;
-
-    @Column(name = "food_limit_date")
-    @NotNull
     private Timestamp food_limit_date;
-
-    @Column(name = "food_add_date")
-    @NotNull
     private Timestamp food_add_date;
-
-    @Column(name = "food_price")
-    @NotNull
     private Float food_price;
+
+    public User_Possess() {
+    }
 
     public User_Possess(Integer id_user, Integer id_storage, Integer id_food, Timestamp food_limit_date, Timestamp food_add_date, Float food_price) {
         this.id_user = id_user;
@@ -60,6 +40,9 @@ public class User_Possess {
         this.food_price = food_price;
     }
 
+    @Id
+    @Column(name = "id_user")
+    @NotNull
     public Integer getId_user() {
         return id_user;
     }
@@ -68,6 +51,9 @@ public class User_Possess {
         this.id_user = id_user;
     }
 
+    @Id
+    @Column(name = "id_storage")
+    @NotNull
     public Integer getId_storage() {
         return id_storage;
     }
@@ -76,6 +62,9 @@ public class User_Possess {
         this.id_storage = id_storage;
     }
 
+    @Id
+    @Column(name = "id_food")
+    @NotNull
     public Integer getId_food() {
         return id_food;
     }
@@ -84,6 +73,8 @@ public class User_Possess {
         this.id_food = id_food;
     }
 
+    @Id
+    @Column(name = "quantity")
     public String getQuantity() {
         return quantity;
     }
@@ -92,6 +83,8 @@ public class User_Possess {
         this.quantity = quantity;
     }
 
+    @Column(name = "food_limit_date")
+    @NotNull
     public Timestamp getFood_limit_date() {
         return food_limit_date;
     }
@@ -100,6 +93,8 @@ public class User_Possess {
         this.food_limit_date = food_limit_date;
     }
 
+    @Column(name = "food_add_date")
+    @NotNull
     public Timestamp getFood_add_date() {
         return food_add_date;
     }
@@ -108,6 +103,8 @@ public class User_Possess {
         this.food_add_date = food_add_date;
     }
 
+    @Column(name = "food_price")
+    @NotNull
     public Float getFood_price() {
         return food_price;
     }

@@ -1,16 +1,11 @@
-import Hibernate.Tables.Users;
-import Hibernate.TablesManager.StorageTypeManager;
-import Hibernate.TablesManager.UserPossessManager;
-import Hibernate.TablesManager.UsersManager;
+import connectionManager.Session;
+import connectionManager.SignUp;
 
 public class TestInsert {
 
     public static void main(String[] args) {
-
-        UsersManager usersManager = new UsersManager();
-
-        Users newUser = new Users("tEST", "Password" ,"Mail@zerowaste.com", "06.06.06.06.06", 150, 0);
-
-        usersManager.Insert(Users.class.getName(), newUser);
+        SignUp.createUser("abdou","abdou123","badou@gmail.com","09875435789",1001,100);
+        Session session = new Session("abdou","abdou123");
+        System.out.println(session.isConnected());
     }
 }

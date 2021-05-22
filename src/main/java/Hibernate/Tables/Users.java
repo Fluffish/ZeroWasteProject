@@ -12,6 +12,7 @@ public class Users {
     private String tel_user;
     private Integer user_max_budget;
     private Integer user_current_budget;
+    private boolean is_admin;
 
     public Users() {
     }
@@ -25,7 +26,7 @@ public class Users {
         this.user_current_budget = user_current_budget;
     }
 
-    public Users(Integer id_user, String username, String password, String mail_user, String tel_user, Integer user_max_budget, Integer user_current_budget) {
+    public Users(Integer id_user, String username, String password, String mail_user, String tel_user, Integer user_max_budget, Integer user_current_budget, boolean is_admin) {
         this.id_user = id_user;
         this.username = username;
         this.password = password;
@@ -33,6 +34,7 @@ public class Users {
         this.tel_user = tel_user;
         this.user_max_budget = user_max_budget;
         this.user_current_budget = user_current_budget;
+        this.is_admin = is_admin;
     }
 
     @Id
@@ -104,5 +106,15 @@ public class Users {
 
     public void setUser_current_budget(Integer user_current_budget) {
         this.user_current_budget = user_current_budget;
+    }
+
+    @Column(name = "is_admin")
+    @NotNull
+    public boolean isIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(boolean is_admin) {
+        this.is_admin = is_admin;
     }
 }
