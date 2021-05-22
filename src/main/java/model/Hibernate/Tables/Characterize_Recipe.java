@@ -8,6 +8,9 @@ public class Characterize_Recipe {
     private Integer id_recipe;
     private Integer id_recipe_type;
 
+    public Characterize_Recipe() {
+    }
+
     public Characterize_Recipe(Integer id_recipe, Integer id_recipe_type) {
         this.id_recipe = id_recipe;
         this.id_recipe_type = id_recipe_type;

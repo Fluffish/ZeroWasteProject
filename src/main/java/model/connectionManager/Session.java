@@ -92,5 +92,6 @@ public class Session {
     public void disconnect() {
         this.user = null;
         this.connected = false;
+        this.utilities = null;
     }
 }

@@ -1,9 +1,6 @@
 package model;
 
-import model.Hibernate.Tables.Food;
-import model.Hibernate.Tables.Recipe;
-import model.Hibernate.Tables.User_Possess;
-import model.Hibernate.Tables.Users;
+import model.Hibernate.Tables.*;
 import model.Hibernate.TablesManager.*;
 
 import java.sql.Timestamp;
@@ -17,6 +14,7 @@ public class UserUtilities {
     private final FoodManager FOOD_MANAGER = new FoodManager();
     private final RecipeManager RECIPE_MANAGER = new RecipeManager();
     private final RecipeTypeManager RECIPE_TYPE_MANAGER = new RecipeTypeManager();
+    private final CharacterizeFoodManager CHARACTERIZE_FOOD_MANAGER = new CharacterizeFoodManager();
     private final CharacterizeRecipeManager CHARACTERIZE_RECIPE_MANAGER = new CharacterizeRecipeManager();
     private final UseFoodManager USE_FOOD_MANAGER = new UseFoodManager();
     private final Food EMPTY_STORAGE = new Food(1, "null");
@@ -59,6 +57,18 @@ public class UserUtilities {
 
     public StorageRoom getStorageRoom() {
         return storageRoom;
+    }
+
+    public void addFood(String name, int idFoodType) {
+        Food newFood = new Food(name);
+
+        FOOD_MANAGER.Insert(Food.class.getName(), newFood);
+
+        newFood = FOOD_MANAGER.FindFoodByName(name);
+
+        Characterize_Food newCharacterizedFood = new Characterize_Food(newFood.getId_food(), idFoodType);
+
+        CHARACTERIZE_FOOD_MANAGER.Insert(Characterize_Food.class.getName(), newCharacterizedFood);
     }
 
     public void addUserPossess(int idStorage, int idFood, String quantity,

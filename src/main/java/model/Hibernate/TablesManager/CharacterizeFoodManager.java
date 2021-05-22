@@ -1,6 +1,6 @@
 package model.Hibernate.TablesManager;
 
-import Hibernate.Tables.Characterize_Food;
+import model.Hibernate.Tables.Characterize_Food;
 
 import java.util.ArrayList;
 import java.util.List;

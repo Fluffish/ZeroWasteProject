@@ -1,20 +1,28 @@
 import model.Hibernate.AppUtils;
 import model.Hibernate.TablesManager.UsersManager;
-import model.StorageRoom;
-import model.UserUtilities;
 import model.connectionManager.Session;
+import model.connectionManager.SignUp;
 
 public class TestInsert {
 
     public static void main(String[] args) {
+//        SignUp.createUser("Djursy", "djursybis", "djursy@gmail.com", "00 00 00 00 00", 500, 425);
+
         UsersManager usersManager = new UsersManager();
         Session session = new Session("Mayas", "SuperMayas123");
-        StorageRoom storageRoom = UserUtilities.getUserStorages(session.getUser());
 
-//        UserUtilities.addUserPossess(session.getUser(), storageRoom.getElement(0).getIdStorage(), 2, "500g", AppUtils.getTimestampForTwoWeeksAway(), 5);
+        session.utilities.addUserPossess(1, 2, "200g", AppUtils.getTimestampForOneWeekAway(), 5f);
 
-//        storageRoom = UserUtilities.getUserStorages(session.getUser());
+        System.out.println(session.utilities.getAllFood());
 
-        System.out.println(UserUtilities.getAvailableRecipes(session.getUser(), storageRoom));
+        session.disconnect();
+
+        session = new Session("Djursy", "djursybis");
+
+        System.out.println(session.utilities.getAllFood());
+
+        session.disconnect();
+
+        System.out.println(session.isConnected());
     }
 }

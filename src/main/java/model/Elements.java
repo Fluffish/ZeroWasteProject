@@ -15,12 +15,10 @@ public abstract class Elements<T> {
     public Elements() {
         this.name = null;
         this.elements = new HashMap<>(0);
-
     }
 
     public void add(Integer key, T element) {
         elements.put(key, element);
-
     }
 
     public T getElement(Integer key) {

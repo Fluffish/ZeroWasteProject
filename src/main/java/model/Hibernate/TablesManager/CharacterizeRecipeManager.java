@@ -2,7 +2,6 @@ package model.Hibernate.TablesManager;
 
 import model.Hibernate.Tables.Characterize_Recipe;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 

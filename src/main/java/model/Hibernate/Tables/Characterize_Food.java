@@ -1,4 +1,4 @@
-package Hibernate.Tables;
+package model.Hibernate.Tables;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,9 @@ import javax.persistence.Table;
 public class Characterize_Food {
     private Integer id_food;
     private Integer id_food_type;
+
+    public Characterize_Food() {
+    }
 
     public Characterize_Food(Integer id_food, Integer id_food_type) {
         this.id_food = id_food;
