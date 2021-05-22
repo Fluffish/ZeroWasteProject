@@ -20,8 +20,9 @@ public class UserPossessManager extends Manager<User_Possess> {
         }
         return result;
     }
+
     public List<Integer> FindDistinctStorages(Integer id_user) {
-        String sqlQuery = "SELECT Distinct id_storage FROM User_Possess x WHERE x.id_user = " + id_user;
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user +"' GROUP BY id_storage" ;
         List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -29,11 +30,12 @@ public class UserPossessManager extends Manager<User_Possess> {
         for (User_Possess possess : possessedStorage) {
             result.add(possess.getId_storage());
         }
+
         return result;
     }
 
-    public List<Integer> FindFood(int id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_food= '" + id_storage + "'";
+    public List<Integer> FindFood(Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -44,10 +46,33 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
+    public User_Possess FindUserPossess(Integer id_user, Integer id_food, Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user + "' AND x.id_food = '" + id_food + "' AND x.id_storage = '" + id_storage + "'";
+        List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
-    public List<Integer> FindVeryLimitedFood() {
+        if (foodFound.isEmpty())
+            return null;
+
+        return foodFound.get(0);
+    }
+
+    public List<User_Possess> SelectStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage +"' AND  x.id_user = '" + id_user + "'";
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        return selectedStorages;
+    }
+
+    public List<User_Possess> SelectUserPossessFullStorage(Integer id_user,Integer id_storage) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_storage = '" + id_storage + "' AND x.id_user = '" + id_user + "' AND x.id_food != '1'";
+        List<User_Possess> selectedStorages = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        return selectedStorages;
+    }
+
+    public List<Integer> FindVeryLimitedFood(Integer id_user) {
         Timestamp veryLimited = AppUtils.getTimestampForOneWeekAway();
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + veryLimited +"'";
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + veryLimited + "' AND x.id_user = '" + id_user + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -58,9 +83,9 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
-    public List<Integer> FindLimitedFood() {
+    public List<Integer> FindLimitedFood(Integer id_user) {
         Timestamp limited = AppUtils.getTimestampForTwoWeeksAway();
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + limited +"'";
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date < '" + limited + "' AND x.id_user = '" + id_user + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();
@@ -71,9 +96,9 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
-    public List<Integer> FindNotUrgentFood() {
-        Timestamp limited = AppUtils.getTimestampForTwoWeeksAway();
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date > '" + limited + "'";
+    public List<Integer> FindNotUrgentFood(Integer id_user) {
+        Timestamp nonUrgent = AppUtils.getTimestampForTwoWeeksAway();
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.food_limit_date > '" + nonUrgent + "' AND x.id_user = '" + id_user + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         List<Integer> result = new ArrayList<>();

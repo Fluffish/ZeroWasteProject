@@ -11,6 +11,9 @@ public class Characterize_Food {
     private Integer id_food;
     private Integer id_food_type;
 
+    public Characterize_Food() {
+    }
+
     public Characterize_Food(Integer id_food, Integer id_food_type) {
         this.id_food = id_food;
         this.id_food_type = id_food_type;

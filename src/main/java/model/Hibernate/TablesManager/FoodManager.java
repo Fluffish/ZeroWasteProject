@@ -12,7 +12,18 @@ public class FoodManager extends Manager<Food> {
         return result.size() != 0;
     }
 
-    public List<Integer> findFoodByType(Integer id_food_type) {
+    public Food FindFoodByName(String name) {
+        Connect(Food.class.getName());
+
+        entityManager.getTransaction().begin();
+        Food food = entityManager.find(Food.class, name);
+        entityManager.getTransaction().commit();
+
+        Disconnect();
+        return food;
+    }
+
+    public List<Integer> FindFoodByType(Integer id_food_type) {
         String sqlQuery = "SELECT x FROM Food x WHERE x.id_food_type = " + id_food_type;
         List<Food> foodFound = MakeQuery(Food.class.getName(), sqlQuery);
 
