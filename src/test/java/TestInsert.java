@@ -9,7 +9,7 @@ public class TestInsert {
 
         UsersManager usersManager = new UsersManager();
 
-        Users newUser = new Users("Florent", "Password" ,"Mail@zerowaste.com", "06.06.06.06.06", 150, 0);
+        Users newUser = new Users("tEST", "Password" ,"Mail@zerowaste.com", "06.06.06.06.06", 150, 0);
 
         usersManager.Insert(Users.class.getName(), newUser);
     }
