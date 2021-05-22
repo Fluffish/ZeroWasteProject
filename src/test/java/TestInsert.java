@@ -1,5 +1,5 @@
-import connectionManager.Session;
-import connectionManager.SignUp;
+import model.connectionManager.Session;
+import model.connectionManager.SignUp;
 
 public class TestInsert {
 
