@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserUtilities {
+public class UsersUtilities {
     private final UsersManager USERS_MANAGER = new UsersManager();
     private final UserPossessManager USER_POSSESS_MANAGER = new UserPossessManager();
     private final FoodManager FOOD_MANAGER = new FoodManager();
@@ -22,7 +22,7 @@ public class UserUtilities {
     protected StorageRoom storageRoom;
     protected Users user;
 
-    public UserUtilities(Users user) {
+    public UsersUtilities(Users user) {
         this.user = user;
         this.storageRoom = getUserStorages(user);
     }

@@ -2,9 +2,9 @@ package model.connectionManager;
 
 import model.Hibernate.Tables.Users;
 import model.Hibernate.TablesManager.UsersManager;
-import model.UserUtilities;
+import model.UsersUtilities;
 
-public class Session {
+public class ConnectingSession {
 
     private static UsersManager USER_MANAGER = new UsersManager();
     private static PasswordAuthentication PASSWORDAUTHENTICATION = new PasswordAuthentication();
@@ -12,16 +12,16 @@ public class Session {
     private Users user;
     private boolean connected;
 
-    public UserUtilities utilities;
+    public UsersUtilities utilities;
 
-    public Session() {
+    public ConnectingSession() {
         this.user = null;
         this.connected = false;
 
         this.utilities = null;
     }
 
-    public Session(String username, String password) {
+    public ConnectingSession(String username, String password) {
         UsersManager usersManager = new UsersManager();
         char[] passwordToCharArray = password.toCharArray();
 
@@ -30,7 +30,7 @@ public class Session {
                                                     usersManager.getUsers(username).getPassword())) {
                 this.user = usersManager.getUsers(username);
                 this.connected = true;
-                this.utilities = new UserUtilities(user);
+                this.utilities = new UsersUtilities(user);
             } else {
                 this.user = null;
                 this.connected = false;
