@@ -13,9 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Hibernate.Tables.Food;
 import model.Hibernate.Tables.User_Possess;
-import model.Hibernate.Tables.Users;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +26,6 @@ public class ControllerAdmin implements Initializable {
 
     private User_Possess deleted_food;
 
-
     @FXML
     private ListView<String> listOfUsers;
 
@@ -39,11 +36,7 @@ public class ControllerAdmin implements Initializable {
     private ListView<?> listOfStockage;
 
 
-    @FXML
-    void getFoodtoDelete(MouseEvent event) {
-       // this.deleted_food = DisplayListofood.getSelectionModel().getSelectedItem();
 
-    }
 
     @FXML
     void DeleteAFood(javafx.event.ActionEvent event) {
@@ -54,7 +47,11 @@ public class ControllerAdmin implements Initializable {
 
     @FXML
     void SelectedFood(MouseEvent event) {
+        //this.deleted_food = listOfFood.getSelectionModel().getSelectedItem();
 
+    }
+
+    public void DeleteAUser(javafx.event.ActionEvent actionEvent) {
     }
 
     @FXML
@@ -72,8 +69,6 @@ public class ControllerAdmin implements Initializable {
 
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> users = FXCollections.observableArrayList(Main.session.utilities.getAllUsername());
@@ -84,12 +79,13 @@ public class ControllerAdmin implements Initializable {
 
     }
 
-
     public void handleCloseButtonAction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
         stage.show();
     }
+
+
 }

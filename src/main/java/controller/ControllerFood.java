@@ -17,12 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Hibernate.Tables.Food;
-import model.Hibernate.Tables.Food_Type;
 import model.Hibernate.Tables.User_Possess;
 import model.Storage;
-import org.bouncycastle.asn1.cms.TimeStampAndCRL;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
@@ -81,9 +78,10 @@ public class ControllerFood implements Initializable
 
     @FXML
     private MenuItem yaourt;
+
     private Integer getSelectedFoodType;
     @FXML
-    private ListView<User_Possess> DisplayListofood;
+    private ListView<User_Possess> DisplayListoffood;
 
     @FXML
     private TextField PriceOfTheArticle;
@@ -97,43 +95,57 @@ public class ControllerFood implements Initializable
 
 
     @FXML
-     public void getCereal(javafx.event.ActionEvent event) {
+     public void getCereal(javafx.event.ActionEvent event)
+    {
         getSelectedFoodType = 8;
+        TypeOfFoodCheckBox.setText("Céréal");
     }
 
     @FXML
     public void getFeculent(javafx.event.ActionEvent event) {
+
         getSelectedFoodType = 7 ;
+        TypeOfFoodCheckBox.setText("Féculent");
     }
 
     @FXML
     public void getFromage(javafx.event.ActionEvent event) {
+
         getSelectedFoodType = 5;
+        TypeOfFoodCheckBox.setText("Fromage");
     }
 
     @FXML
     public void getFruit(javafx.event.ActionEvent event) {
         getSelectedFoodType = 3;
+        TypeOfFoodCheckBox.setText("Fruit");
+
     }
 
     @FXML
     public void getLaitage(javafx.event.ActionEvent event) {
+
         getSelectedFoodType = 4;
+        TypeOfFoodCheckBox.setText("Laitage");
     }
 
     @FXML
     public void getLegume(javafx.event.ActionEvent event) {
+
         getSelectedFoodType = 2;
+        TypeOfFoodCheckBox.setText("Légume");
     }
 
     @FXML
     public void getViande(javafx.event.ActionEvent event) {
         getSelectedFoodType = 1;
+        TypeOfFoodCheckBox.setText("Viande");
     }
 
     @FXML
     public void getYaourt(javafx.event.ActionEvent event) {
         getSelectedFoodType = 6;
+        TypeOfFoodCheckBox.setText("Yaourt");
     }
 
     @FXML
@@ -177,7 +189,7 @@ public class ControllerFood implements Initializable
 
     @FXML
     void getFoodtoDelete(MouseEvent event) {
-        this.deleted_food = DisplayListofood.getSelectionModel().getSelectedItem();
+        this.deleted_food = DisplayListoffood.getSelectionModel().getSelectedItem();
 
     }
 
@@ -190,7 +202,7 @@ public class ControllerFood implements Initializable
 
     public void refresh(){
         ObservableList<User_Possess> listofUsersFood = FXCollections.observableArrayList(Main.session.utilities.getAllUsersPossess());
-        DisplayListofood.setItems(listofUsersFood);
+        DisplayListoffood.setItems(listofUsersFood);
 
         ObservableList<Food> listofFood = FXCollections.observableArrayList(Main.session.utilities.getFoodOfTableFood());
         ShowFood.setItems(listofFood);
@@ -216,7 +228,7 @@ public class ControllerFood implements Initializable
 
     @FXML
     public void AvailableDishes(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/dish.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/dish.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -226,7 +238,7 @@ public class ControllerFood implements Initializable
 
     @FXML
     public void MyProfil(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/profil.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/profil.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -236,7 +248,7 @@ public class ControllerFood implements Initializable
 
     @FXML
     public void MainPage(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/mainpage2.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -245,7 +257,7 @@ public class ControllerFood implements Initializable
     }
 
     public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
@@ -255,7 +267,7 @@ public class ControllerFood implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<User_Possess> listofUsersFood = FXCollections.observableArrayList(Main.session.utilities.getAllUsersPossess());
-        DisplayListofood.setItems(listofUsersFood);
+        DisplayListoffood.setItems(listofUsersFood);
         ObservableList<Food> listofFood = FXCollections.observableArrayList(Main.session.utilities.getFoodOfTableFood());
         ShowFood.setItems(listofFood);
         ShowFood.getItems().add(new Food("Rentrez un nouvel aliment"));
@@ -268,7 +280,7 @@ public class ControllerFood implements Initializable
 
 
     public void StorageRedirection(ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Stockage.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Stockage.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);

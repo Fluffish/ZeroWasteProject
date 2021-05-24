@@ -50,7 +50,7 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="575.0" layoutY="68.0" mnemonicParsing="false" onAction="#MainPage" opacity="0.59" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #008000; -fx-border-color: white;" text="page principale" textFill="#fffdfd" />
+      <Button layoutX="567.0" layoutY="68.0" mnemonicParsing="false" onAction="#MainPage" opacity="0.59" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #008000; -fx-border-color: white;" text="page principale" textFill="#fffdfd" />
       <MenuButton fx:id="Checkbox" layoutX="153.0" layoutY="174.0" mnemonicParsing="false" text="Stockage">
         <items>
           <MenuItem fx:id="refrigerator" mnemonicParsing="false" onAction="#NameOfTheItem" text="Réfrigérateur" />

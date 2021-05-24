@@ -33,7 +33,7 @@ public class ControllerDishes implements Initializable{
     }
 
     public void StorageRedirection(ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Stockage.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Stockage.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -42,7 +42,7 @@ public class ControllerDishes implements Initializable{
 
     @FXML
     public void MyProfil(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/profil.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/profil.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -52,7 +52,7 @@ public class ControllerDishes implements Initializable{
 
     @FXML
     public void MainPage(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/mainpage2.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -61,7 +61,7 @@ public class ControllerDishes implements Initializable{
     }
 
     public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
@@ -74,7 +74,7 @@ public class ControllerDishes implements Initializable{
     }
 
     public void MyFoodRediction(ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Food.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Food.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);

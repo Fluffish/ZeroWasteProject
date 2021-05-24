@@ -16,9 +16,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.MenuItem;
 import model.Storage;
 
-import java.awt.*;
-
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,7 +53,7 @@ public class ControllerStockage implements Initializable {
     private ListView<Storage> listView;
 
 
-//ajoute a la bdd un stockage et le rajoute dans la checkbock
+    //ajoute a la bdd un stockage et le rajoute dans la checkbock
     @FXML
     void addAStockage(javafx.event.ActionEvent event) {
         if (Temperature.getText().isEmpty()) {
@@ -65,42 +62,49 @@ public class ControllerStockage implements Initializable {
         } else {
             try {
                 Float temp = Float.parseFloat(Temperature.getText());
-                Main.session.utilities.addUserStorage(selected_storage,temp);
+                Main.session.utilities.addUserStorage(selected_storage, temp);
                 refresh();
-            }catch (NumberFormatException exc ){
+            } catch (NumberFormatException exc) {
                 System.out.println("Veuillez renseigner un chiffre");
             }
         }
     }
 
 
-
     @FXML
     void NameOfTheItem(javafx.event.ActionEvent event) {
         selected_storage = refrigerator.getText();
+        Checkbox.setText(selected_storage);
     }
 
     public void NameOfTheItem2(ActionEvent actionEvent) {
         selected_storage = fridge.getText();
+        Checkbox.setText(selected_storage);
     }
 
     public void NameOfTheItem3(ActionEvent actionEvent) {
-        selected_storage =locker.getText();
+        selected_storage = locker.getText();
+        Checkbox.setText(selected_storage);
+
     }
 
     public void NameOfTheItem4(ActionEvent actionEvent) {
-        selected_storage =warehouse.getText();
+        selected_storage = warehouse.getText();
+        Checkbox.setText(selected_storage);
+
     }
 
     public void NameOfTheItem5(ActionEvent actionEvent) {
-        selected_storage =vault.getText();
+        selected_storage = vault.getText();
+        Checkbox.setText(selected_storage);
+
     }
 
 
     @FXML
     public void MyFoodRediction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Food.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Food.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
         stage.show();
@@ -109,8 +113,8 @@ public class ControllerStockage implements Initializable {
 
     @FXML
     public void AvailableDishes(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/dish.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/dish.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
         stage.show();
@@ -119,8 +123,8 @@ public class ControllerStockage implements Initializable {
 
     @FXML
     public void MyProfil(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/profil.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/profil.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
         stage.show();
@@ -129,8 +133,8 @@ public class ControllerStockage implements Initializable {
 
     @FXML
     public void MainPage(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/mainpage2.fxml"));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
         stage.show();
@@ -138,8 +142,8 @@ public class ControllerStockage implements Initializable {
     }
 
     public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
         stage.show();
@@ -156,7 +160,7 @@ public class ControllerStockage implements Initializable {
         deleted_item = this.listView.getSelectionModel().getSelectedItem();
     }
 
-    public void refresh(){
+    public void refresh() {
         ObservableList<Storage> listofStorage = FXCollections.observableArrayList(Main.session.utilities.getStorageRoom().values());
         listView.setItems(listofStorage);
     }
@@ -164,10 +168,9 @@ public class ControllerStockage implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-      ObservableList<Storage> listofStorage = FXCollections.observableArrayList(Main.session.utilities.getStorageRoom().values());
-      listView.setItems(listofStorage);
-        }
+        ObservableList<Storage> listofStorage = FXCollections.observableArrayList(Main.session.utilities.getStorageRoom().values());
+        listView.setItems(listofStorage);
 
 
-
+    }
 }

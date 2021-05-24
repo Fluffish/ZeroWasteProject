@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.beans.value.ObservableStringValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
@@ -9,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 import model.connectionManager.ConnectingSession;
@@ -58,7 +56,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
@@ -73,7 +71,7 @@ public class Controller implements Initializable {
         String password = SignInPassword.getText();
         Main.session = new ConnectingSession(username, password);
        if (Main.session.isConnected()) {
-            Parent main_page = FXMLLoader.load(getClass().getResource("/mainpage2.fxml"));
+            Parent main_page = FXMLLoader.load(getClass().getResource("/Views/mainpage2.fxml"));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(main_page);
             stage.setScene(scene);

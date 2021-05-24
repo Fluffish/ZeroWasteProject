@@ -15,7 +15,6 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import model.Hibernate.Tables.Food;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,7 +46,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     public void handleCloseButtonAction(javafx.event.ActionEvent event) throws IOException {
-        Parent main_page = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
+        Parent main_page = FXMLLoader.load(getClass().getResource("/Views/homepage2.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(main_page);
         stage.setScene(scene);
@@ -59,7 +58,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     public void StorageRedirection(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Stockage.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Stockage.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -69,7 +68,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     public void MyFoodRediction(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/Food.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/Food.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -79,7 +78,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     public void AvailableDishes(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/dish.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/dish.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -90,7 +89,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     public void MyProfil(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/profil.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/profil.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
@@ -100,7 +99,7 @@ public class ControllerMainPage implements Initializable {
 
     @FXML
     void OnAdminPage(javafx.event.ActionEvent event) throws IOException {
-        Parent homepage = FXMLLoader.load(getClass().getResource("/AdminPage.fxml"));
+        Parent homepage = FXMLLoader.load(getClass().getResource("/Views/AdminPage.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(homepage);
         stage.setScene(scene);
