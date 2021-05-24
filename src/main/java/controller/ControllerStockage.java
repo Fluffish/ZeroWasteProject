@@ -153,6 +153,7 @@ public class ControllerStockage implements Initializable {
     void deleteAStockage(ActionEvent event) {
         Main.session.utilities.removeStorageUserPossess(deleted_item.getIdStorage());
         refresh();
+        
     }
 
     @FXML
