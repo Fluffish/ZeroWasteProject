@@ -18,6 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/homepage2.fxml"));
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
+
     }
 
     public void setSession(ConnectingSession session) {
