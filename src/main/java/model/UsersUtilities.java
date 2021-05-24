@@ -18,6 +18,8 @@ public class UsersUtilities {
     private final CharacterizeRecipeManager CHARACTERIZE_RECIPE_MANAGER = new CharacterizeRecipeManager();
     private final UseFoodManager USE_FOOD_MANAGER = new UseFoodManager();
     private final Food EMPTY_STORAGE = new Food(1, "null");
+    private final StorageTypeManager STORAGE_TYPE_MANAGER = new StorageTypeManager();
+    private final FoodTypeManager FOOD_TYPE_MANAGER = new FoodTypeManager();
 
     protected StorageRoom storageRoom;
     protected Users user;
@@ -27,23 +29,37 @@ public class UsersUtilities {
         this.storageRoom = getUserStorages(user);
     }
 
-    public void addUserStorage(int idStorage) {
+
+    public List<Food_Type> getAllFoodType() {
+        return FOOD_TYPE_MANAGER.getAllFoodType();
+    }
+
+    public void addUserStorage(String storageName, float temperature) {
+        List<Integer> idsStorage = STORAGE_TYPE_MANAGER.FindStorageByNameAndTemperature(storageName, temperature);
+
+        if (idsStorage.size() == 0) {
+            Storage_Type newStorageType = new Storage_Type(storageName, temperature);
+            STORAGE_TYPE_MANAGER.Insert(Storage_Type.class.getName(), newStorageType);
+            idsStorage = STORAGE_TYPE_MANAGER.FindStorageByNameAndTemperature(storageName, temperature);
+        }
+
+        Integer idStorage = idsStorage.get(0);
+
         User_Possess newUserPosses = new User_Possess(user.getId_user(), idStorage, EMPTY_STORAGE.getId_food(),
                 "1", Timestamp.valueOf(LocalDateTime.now()),
                 Timestamp.valueOf(LocalDateTime.now()), 0f);
 
         USER_POSSESS_MANAGER.Insert(User_Possess.class.getName(), newUserPosses);
 
-        storageRoom.add(idStorage, new Storage(idStorage));
+        storageRoom.add(idStorage, new Storage(storageName, idStorage));
     }
-
     public StorageRoom getUserStorages(Users user) {
         List<Integer> userStorages = USER_POSSESS_MANAGER.FindDistinctStorages(user.getId_user());
 
         StorageRoom storageRoom = new StorageRoom();
 
         for (int idStorage : userStorages){
-            Storage storage = new Storage(idStorage);
+            Storage storage = new Storage(STORAGE_TYPE_MANAGER.FindStorageById(idStorage).getStorage_name(), idStorage);
             List<Integer> foods = USER_POSSESS_MANAGER.FindFood(idStorage);
             for (int idFood : foods){
                 if (idFood != 1)
@@ -55,11 +71,15 @@ public class UsersUtilities {
         return storageRoom;
     }
 
+    public List<Food> getFoodOfTableFood() {
+        return FOOD_MANAGER.FindAllFood();
+    }
+
     public StorageRoom getStorageRoom() {
         return storageRoom;
     }
 
-    public void addFood(String name, int idFoodType) {
+    public Integer addFood(String name, int idFoodType) {
         Food newFood = new Food(name);
 
         FOOD_MANAGER.Insert(Food.class.getName(), newFood);
@@ -69,6 +89,8 @@ public class UsersUtilities {
         Characterize_Food newCharacterizedFood = new Characterize_Food(newFood.getId_food(), idFoodType);
 
         CHARACTERIZE_FOOD_MANAGER.Insert(Characterize_Food.class.getName(), newCharacterizedFood);
+
+        return newFood.getId_food();
     }
 
     public void addUserPossess(int idStorage, int idFood, String quantity,
@@ -86,8 +108,8 @@ public class UsersUtilities {
         USERS_MANAGER.Merge(Users.class.getName(), user);
     }
 
-    public void removeFoodUserPossess(int idFood, int idStorage) {
-        User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(user.getId_user(), idFood, idStorage);
+    public void removeFoodUserPossess(int idFood, int idStorage, Timestamp add_date) {
+        User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(user.getId_user(), idFood, idStorage, add_date);
 
         USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), user_possess);
 
@@ -186,6 +208,9 @@ public class UsersUtilities {
         }
 
         return availableRecipes;
+    }
+    public List<User_Possess> getAllUsersPossess() {
+        return USER_POSSESS_MANAGER.GetAllUserPossession(user.getId_user());
     }
 
     public List<String> getRecipeType(int idRecipe) {

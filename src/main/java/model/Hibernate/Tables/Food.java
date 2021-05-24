@@ -42,4 +42,10 @@ public class Food {
     public void setFood_name(String food_name) {
         this.food_name = food_name;
     }
+
+
+    @Override
+    public String toString(){
+        return food_name;
+    }
 }

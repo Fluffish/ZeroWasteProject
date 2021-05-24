@@ -17,4 +17,10 @@ public class FoodTypeManager extends Manager<Food_Type> {
         }
         return result;
     }
+
+    public List<Food_Type> getAllFoodType() {
+        String sqlQuery = "SELECT x FROM Food_Type x";
+        List<Food_Type> typeFound = MakeQuery(Food_Type.class.getName(), sqlQuery);
+        return typeFound;
+    }
 }

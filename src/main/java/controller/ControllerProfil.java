@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.beans.value.ObservableStringValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import model.Hibernate.Tables.Users;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,6 +51,10 @@ public class ControllerProfil implements Initializable {
     private TextField NewPassword;
 
 
+
+public void DisplayUsername(){
+
+}
 
     @FXML
     void ChangeTheBudget(javafx.event.ActionEvent event) {
@@ -120,6 +127,10 @@ public class ControllerProfil implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+           // ObservableStringValue username =  FXCollections.observableArrayList(Main.session.getUser().getUsername());
+            //Username.se
+
+       // ObservableList<Storage> listofStorage = FXCollections.observableArrayList(Main.session.utilities.getStorageRoom().val
 
     }
 

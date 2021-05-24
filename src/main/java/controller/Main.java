@@ -5,8 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.connectionManager.ConnectingSession;
 
 public class Main extends Application {
+
+    protected static ConnectingSession session;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -16,8 +20,14 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public void setSession(ConnectingSession session) {
+        this.session = session;
+    }
+
     public static void main(String[] args) {
+
         launch(args);
+
     }
 
 

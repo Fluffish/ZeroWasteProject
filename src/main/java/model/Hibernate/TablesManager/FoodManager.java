@@ -13,14 +13,16 @@ public class FoodManager extends Manager<Food> {
     }
 
     public Food FindFoodByName(String name) {
-        Connect(Food.class.getName());
+        String sqlQuery = "SELECT x FROM Food x WHERE x.food_name = '" + name + "'";
+        List<Food> foodFound = MakeQuery(Food.class.getName(), sqlQuery);
 
-        entityManager.getTransaction().begin();
-        Food food = entityManager.find(Food.class, name);
-        entityManager.getTransaction().commit();
+        return foodFound.get(0);
+    }
 
-        Disconnect();
-        return food;
+    public List<Food> FindAllFood() {
+        String sqlQuery = "SELECT x FROM Food x WHERE x.id_food != 1";
+        List<Food> result = MakeQuery(Food.class.getName(), sqlQuery);
+        return result;
     }
 
     public List<Integer> FindFoodByType(Integer id_food_type) {

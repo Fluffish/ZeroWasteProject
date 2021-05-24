@@ -1,5 +1,6 @@
 package model.Hibernate.Tables;
 import com.sun.istack.NotNull;
+import model.Hibernate.TablesManager.FoodManager;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -111,5 +112,11 @@ public class User_Possess {
 
     public void setFood_price(Float food_price) {
         this.food_price = food_price;
+    }
+
+    @Override
+    public String toString() {
+        FoodManager foodManager = new FoodManager();
+        return foodManager.FindFoodById(this.id_food).toString();
     }
 }

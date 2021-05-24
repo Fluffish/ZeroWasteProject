@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Hibernate.Tables.Food;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -22,13 +25,13 @@ public class ControllerMainPage implements Initializable {
     private Parent fxml ;
 
     @FXML
-    private ListView<?> UseImmergency;
+    private ListView<Food> UseImmergency;
 
     @FXML
-    private ListView<?> YouCanUse;
+    private ListView<Food> YouCanUse;
 
     @FXML
-    private ListView<?> UseItLater;
+    private ListView<Food> UseItLater;
 
     @FXML
     private ListView<?> ShoppingList;
@@ -93,9 +96,16 @@ public class ControllerMainPage implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Food> emmergencyfoods = FXCollections.observableArrayList(Main.session.utilities.getVeryLimitedFood());
+        this.UseImmergency.setItems(emmergencyfoods);
+
+        ObservableList<Food> limitedfood = FXCollections.observableArrayList(Main.session.utilities.getLimitedFood());
+        this.YouCanUse.setItems(limitedfood);
+
+        ObservableList<Food> foods  = FXCollections.observableArrayList(Main.session.utilities.getNotUrgentFood());
+        this.UseItLater.setItems(foods);
 
     }
 
-    public void AddToTheList(javafx.event.ActionEvent actionEvent) {
-    }
+
 }

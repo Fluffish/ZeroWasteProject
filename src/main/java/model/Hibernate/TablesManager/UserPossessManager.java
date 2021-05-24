@@ -46,8 +46,8 @@ public class UserPossessManager extends Manager<User_Possess> {
         return result;
     }
 
-    public User_Possess FindUserPossess(Integer id_user, Integer id_food, Integer id_storage) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user + "' AND x.id_food = '" + id_food + "' AND x.id_storage = '" + id_storage + "'";
+    public User_Possess FindUserPossess(Integer id_user, Integer id_food, Integer id_storage, Timestamp add_date) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user + "' AND x.id_food = '" + id_food + "' AND x.id_storage = '" + id_storage + "' AND x.food_add_date = '" + add_date + "'";
         List<User_Possess> foodFound = MakeQuery(User_Possess.class.getName(), sqlQuery);
 
         if (foodFound.isEmpty())
@@ -107,5 +107,12 @@ public class UserPossessManager extends Manager<User_Possess> {
             result.add(food.getId_food());
         }
         return result;
+    }
+
+    public List<User_Possess> GetAllUserPossession(Integer id_user) {
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = " + id_user;
+        List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
+
+        return possessedStorage;
     }
 }

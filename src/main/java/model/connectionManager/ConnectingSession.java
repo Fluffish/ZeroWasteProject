@@ -34,10 +34,13 @@ public class ConnectingSession {
             } else {
                 this.user = null;
                 this.connected = false;
+                this.utilities=null;
             }
         } else {
             this.user = null;
             this.connected = false;
+            this.utilities=null;
+
         }
     }
 
