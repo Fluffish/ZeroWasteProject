@@ -51,7 +51,7 @@
       </Label>
       <ListView fx:id="ListOfDishes" layoutX="155.0" layoutY="132.0" onMouseClicked="#DisplayTheDish" opacity="0.85" prefHeight="254.0" prefWidth="155.0" style="-fx-background-color: white; -fx-border-color: #483D8B;" />
       <TextFlow fx:id="DishSelected" layoutX="350.0" layoutY="136.0" prefHeight="246.0" prefWidth="319.0" style="-fx-border-color: #483D8B;" />
-      <Label layoutX="350.0" layoutY="113.0" prefHeight="17.0" prefWidth="240.0" text="Recette  correspondante :" underline="true">
+      <Label layoutX="350.0" layoutY="113.0" prefHeight="17.0" prefWidth="240.0" text="Ingrédient correspondant :" underline="true">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>

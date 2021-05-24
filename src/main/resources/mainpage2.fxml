@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerMainPage">
    <children>
@@ -57,11 +58,11 @@
             <Font name="System Bold" size="7.0" />
          </font>
       </Label>
-      <Label layoutX="488.0" layoutY="111.0" prefHeight="26.0" prefWidth="93.0" text="Budget restant" underline="true" />
+      <Label layoutX="485.0" layoutY="81.0" prefHeight="26.0" prefWidth="93.0" text="Budget restant :" underline="true" />
       <TextField fx:id="NewItem" layoutX="485.0" layoutY="156.0" prefHeight="25.0" prefWidth="110.0" />
-      <Label layoutX="490.0" layoutY="137.0" prefHeight="17.0" prefWidth="111.0" text="Rajoutez a la liste de course :">
+      <Label layoutX="485.0" layoutY="138.0" prefHeight="17.0" prefWidth="126.0" text="Rajoutez a la liste de course :" underline="true">
          <font>
-            <Font name="System Italic" size="6.0" />
+            <Font size="9.0" />
          </font>
       </Label>
       <Button layoutX="622.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" opacity="0.86" prefHeight="25.0" prefWidth="63.0" text="Quitter">
@@ -69,5 +70,8 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <TextFlow fx:id="Budget" layoutX="485.0" layoutY="107.0" prefHeight="25.0" prefWidth="63.0" style="-fx-border-color: grey;" />
+      <Button mnemonicParsing="false" text="Button" />
+      <Button layoutX="602.0" layoutY="60.0" mnemonicParsing="false" onAction="#OnAdminPage" prefHeight="25.0" prefWidth="78.0" text="Admin" />
    </children>
 </AnchorPane>

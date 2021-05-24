@@ -7,7 +7,7 @@ import model.UsersUtilities;
 public class ConnectingSession {
 
     private static UsersManager USER_MANAGER = new UsersManager();
-    private static PasswordAuthentication PASSWORDAUTHENTICATION = new PasswordAuthentication();
+    private static PasswordAuthentication   PASSWORDAUTHENTICATION = new PasswordAuthentication();
 
     private Users user;
     private boolean connected;

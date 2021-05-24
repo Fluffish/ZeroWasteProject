@@ -47,4 +47,8 @@ public class UsersManager extends Manager<Users> {
         return result.size() != 0;
     }
 
+    public List<Users> getAllUsers() {
+        String sqlQuery = "SELECT x FROM Users x";
+        return MakeQuery(Users.class.getName(), sqlQuery); }
+
 }

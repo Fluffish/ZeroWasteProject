@@ -19,6 +19,11 @@ public class Use_Food {
 
     }
 
+    public Use_Food(Integer id_recipe, Integer id_food) {
+        this.id_recipe =id_recipe;
+        this.id_food=id_food;
+    }
+
     @Id
     @Column(name = "id_recipe")
     public Integer getId_recipe() {

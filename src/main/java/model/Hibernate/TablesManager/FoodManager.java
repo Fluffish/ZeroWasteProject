@@ -16,8 +16,12 @@ public class FoodManager extends Manager<Food> {
         String sqlQuery = "SELECT x FROM Food x WHERE x.food_name = '" + name + "'";
         List<Food> foodFound = MakeQuery(Food.class.getName(), sqlQuery);
 
-        return foodFound.get(0);
+        if (foodFound.size() != 0) {
+            return foodFound.get(0);
+        }
+        return null;
     }
+
 
     public List<Food> FindAllFood() {
         String sqlQuery = "SELECT x FROM Food x WHERE x.id_food != 1";

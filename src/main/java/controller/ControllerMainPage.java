@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import model.Hibernate.Tables.Food;
 
@@ -23,6 +25,8 @@ public class ControllerMainPage implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent fxml ;
+    @FXML
+    private TextFlow Budget;
 
     @FXML
     private ListView<Food> UseImmergency;
@@ -94,6 +98,17 @@ public class ControllerMainPage implements Initializable {
 
     }
 
+    @FXML
+    void OnAdminPage(javafx.event.ActionEvent event) throws IOException {
+        Parent homepage = FXMLLoader.load(getClass().getResource("/AdminPage.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(homepage);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Food> emmergencyfoods = FXCollections.observableArrayList(Main.session.utilities.getVeryLimitedFood());
@@ -104,6 +119,9 @@ public class ControllerMainPage implements Initializable {
 
         ObservableList<Food> foods  = FXCollections.observableArrayList(Main.session.utilities.getNotUrgentFood());
         this.UseItLater.setItems(foods);
+
+        Text budget = new Text( String.valueOf(Main.session.getUser().getUser_max_budget()));
+        Budget.getChildren().add(budget);
 
     }
 

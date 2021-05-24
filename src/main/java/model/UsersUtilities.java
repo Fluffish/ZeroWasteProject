@@ -223,4 +223,13 @@ public class UsersUtilities {
 
         return recipeType;
     }
+
+
+
+    public List<String> getAllUsername() {
+        List<Users> allUsers = USERS_MANAGER.getAllUsers();
+        List<String> allUsername = new ArrayList<>();
+        for (Users user : allUsers) {
+            allUsername.add(user.getUsername());
+        } return allUsername; }
 }
