@@ -43,4 +43,9 @@ public class Recipe {
     public void setRecipe_name(String recipe_name) {
         this.recipe_name = recipe_name;
     }
+
+    @Override
+    public String toString() {
+        return recipe_name;
+    }
 }

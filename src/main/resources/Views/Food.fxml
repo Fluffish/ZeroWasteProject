@@ -41,7 +41,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="137.0" layoutY="68.0" opacity="0.59" prefHeight="33.0" prefWidth="300.0" text="MES ALIMENTS" textFill="ORANGE" underline="true">
+      <Label alignment="CENTER" layoutX="153.0" layoutY="68.0" opacity="0.59" prefHeight="33.0" prefWidth="300.0" text="MES ALIMENTS" textFill="ORANGE" underline="true">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>

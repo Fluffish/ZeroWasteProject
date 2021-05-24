@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import model.Hibernate.Tables.Food;
+import model.Hibernate.Tables.Recipe;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,13 +26,29 @@ public class ControllerDishes implements Initializable{
     private Scene scene;
 
     @FXML
-    private ListView<?> ListOfDishes;
+    private ListView<Recipe> ListOfDishes;
+
+    private Recipe selectedRecipe;
 
     @FXML
     private TextFlow DishSelected;
 
+
+    @FXML
+    private ListView<Food> SecondListRecipe;
+
+
+
     @FXML
     void DisplayTheDish(MouseEvent event) {
+        this.selectedRecipe = ListOfDishes.getSelectionModel().getSelectedItem();
+        refresh();
+
+    }
+
+    public void refresh(){
+        ObservableList<Food> secondlist = FXCollections.observableArrayList(Main.session.utilities.getIngredientsOfARecipe(selectedRecipe.getId_recipe()));
+        SecondListRecipe.setItems(secondlist);
 
     }
 
@@ -70,6 +90,8 @@ public class ControllerDishes implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Recipe> listOfRecipe = FXCollections.observableArrayList(Main.session.utilities.getAvailableRecipes());
+        ListOfDishes.setItems(listOfRecipe);
 
     }
 

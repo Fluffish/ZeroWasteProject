@@ -53,15 +53,16 @@ public class UsersUtilities {
 
         storageRoom.add(idStorage, new Storage(storageName, idStorage));
     }
+
     public StorageRoom getUserStorages(Users user) {
         List<Integer> userStorages = USER_POSSESS_MANAGER.FindDistinctStorages(user.getId_user());
 
         StorageRoom storageRoom = new StorageRoom();
 
-        for (int idStorage : userStorages){
+        for (int idStorage : userStorages) {
             Storage storage = new Storage(STORAGE_TYPE_MANAGER.FindStorageById(idStorage).getStorage_name(), idStorage);
             List<Integer> foods = USER_POSSESS_MANAGER.FindFood(idStorage);
-            for (int idFood : foods){
+            for (int idFood : foods) {
                 if (idFood != 1)
                     storage.add(idFood, FOOD_MANAGER.FindFoodById(idFood));
             }
@@ -94,10 +95,10 @@ public class UsersUtilities {
     }
 
     public void addUserPossess(int idStorage, int idFood, String quantity,
-                                      Timestamp expirationDate, float price) {
+                               Timestamp expirationDate, float price) {
         User_Possess newUserPosses = new User_Possess(user.getId_user(), idStorage, idFood,
-                                                      quantity, expirationDate,
-                                                      Timestamp.valueOf(LocalDateTime.now()), price);
+                quantity, expirationDate,
+                Timestamp.valueOf(LocalDateTime.now()), price);
 
         USER_POSSESS_MANAGER.Insert(User_Possess.class.getName(), newUserPosses);
 
@@ -119,7 +120,7 @@ public class UsersUtilities {
     public void removeStorageUserPossess(int idStorage) {
         List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectStorage(user.getId_user(), idStorage);
 
-        for (User_Possess selectedUserPossess : selectedUserPossesses){
+        for (User_Possess selectedUserPossess : selectedUserPossesses) {
             USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), selectedUserPossess);
         }
 
@@ -129,8 +130,8 @@ public class UsersUtilities {
     public void setEmptyStorage(int idStorage) {
         List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.SelectUserPossessFullStorage(user.getId_user(), idStorage);
 
-        for (User_Possess selectedUserPossess : selectedUserPossesses){
-            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(),selectedUserPossess);
+        for (User_Possess selectedUserPossess : selectedUserPossesses) {
+            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), selectedUserPossess);
         }
 
         storageRoom.getElement(idStorage).clear();
@@ -152,7 +153,7 @@ public class UsersUtilities {
         List<Food> veryLimitedFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindVeryLimitedFood(user.getId_user());
 
-        for (int id_food : foods){
+        for (int id_food : foods) {
             if (id_food != 1)
                 veryLimitedFood.add(FOOD_MANAGER.FindFoodById(id_food));
         }
@@ -164,7 +165,7 @@ public class UsersUtilities {
         List<Food> limitedFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindLimitedFood(user.getId_user());
 
-        for (int id_food : foods){
+        for (int id_food : foods) {
             if (id_food != 1)
                 limitedFood.add(FOOD_MANAGER.FindFoodById(id_food));
         }
@@ -176,7 +177,7 @@ public class UsersUtilities {
         List<Food> nonUrgentFood = new ArrayList<Food>(0);
         List<Integer> foods = USER_POSSESS_MANAGER.FindNotUrgentFood(user.getId_user());
 
-        for (int id_food : foods){
+        for (int id_food : foods) {
             if (id_food != 1)
                 nonUrgentFood.add(FOOD_MANAGER.FindFoodById(id_food));
         }
@@ -209,6 +210,7 @@ public class UsersUtilities {
 
         return availableRecipes;
     }
+
     public List<User_Possess> getAllUsersPossess() {
         return USER_POSSESS_MANAGER.GetAllUserPossession(user.getId_user());
     }
@@ -225,11 +227,55 @@ public class UsersUtilities {
     }
 
 
+    public List<Users> getAllUsername() {
+        List<Users> allUsers = USERS_MANAGER.getAllUsers(user);
+        return allUsers;
+    }
 
-    public List<String> getAllUsername() {
-        List<Users> allUsers = USERS_MANAGER.getAllUsers();
-        List<String> allUsername = new ArrayList<>();
-        for (Users user : allUsers) {
-            allUsername.add(user.getUsername());
-        } return allUsername; }
+    public List<User_Possess> getAllUsersPossess(Users selectedUser) {
+        return USER_POSSESS_MANAGER.GetAllUserPossession(selectedUser.getId_user());
+    }
+
+    public void removeFoodUserPossess(Users selectedUser, int idFood, int idStorage, Timestamp add_date) {
+        User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(selectedUser.getId_user() , idFood, idStorage, add_date);
+
+        USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), user_possess);
+
+        storageRoom.getElement(idStorage).remove(idFood);
+    }
+
+    public void removeAUser(Users user) {
+        USERS_MANAGER.Remove(Users.class.getName(), user);
+        List<User_Possess> selectedUserPossesses = USER_POSSESS_MANAGER.FindAllUserPossession(user.getId_user());
+
+        for (User_Possess selectedUserPossess : selectedUserPossesses){
+            USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), selectedUserPossess);
+        }
+    }
+
+    public List<Food> getIngredientsOfARecipe(int idRecipe) {
+        List<Food> ingredients = USE_FOOD_MANAGER.GetUsedFood(idRecipe);
+
+        return ingredients;
+    }
+
+    public List<User_Possess> getShoppingList() {
+        List<User_Possess> shoppingList = USER_POSSESS_MANAGER.SelectStorage(user.getId_user(), 1);
+
+        return shoppingList;
+    }
+
+    public void addToShoppingList(int idFood) {
+        User_Possess newUserPosses = new User_Possess(user.getId_user(), 1, idFood,
+                "1", Timestamp.valueOf(LocalDateTime.now()),
+                Timestamp.valueOf(LocalDateTime.now()), 0f);
+
+        USER_POSSESS_MANAGER.Insert(User_Possess.class.getName(), newUserPosses);
+    }
+
+    public void removeFromShoppingList(int idFood) {
+        User_Possess user_possess = USER_POSSESS_MANAGER.FindUserPossess(user.getId_user(), idFood, 1);
+
+        USER_POSSESS_MANAGER.Remove(User_Possess.class.getName(), user_possess);
+    }
 }
