@@ -110,9 +110,8 @@ public class UserPossessManager extends Manager<User_Possess> {
     }
 
     public List<User_Possess> GetAllUserPossession(Integer id_user) {
-        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = " + id_user;
+        String sqlQuery = "SELECT x FROM User_Possess x WHERE x.id_user = '" + id_user + "' AND x.id_food != '1'";
         List<User_Possess> possessedStorage = MakeQuery(User_Possess.class.getName(), sqlQuery);
-
         return possessedStorage;
     }
 }

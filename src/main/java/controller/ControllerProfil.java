@@ -9,11 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import model.Hibernate.Tables.Users;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,36 +51,65 @@ public class ControllerProfil implements Initializable {
     private TextField NewBudget;
 
     @FXML
-    private TextField NewPassword;
+    private PasswordField NewPassword;
 
 
 
-public void DisplayUsername(){
-
-}
 
     @FXML
     void ChangeTheBudget(javafx.event.ActionEvent event) {
+    String new_budget = NewBudget.getText();
+    Main.session.changeMaxBudget(Integer.parseInt(new_budget));
+    refresh();
 
     }
 
     @FXML
     void ChangeTheMail(javafx.event.ActionEvent event) {
+    String new_mail = NewEmail.getText();
+    Main.session.changeMail(new_mail);
+    refresh();
 
     }
 
     @FXML
     void ChangeThePassword(javafx.event.ActionEvent event) {
+    String new_password = NewPassword.getText();
+        Main.session.changePassword(new_password);
 
     }
 
     @FXML
     void ChangeThePhone(javafx.event.ActionEvent event) {
-
+    String new_phone = NewPhone.getText();
+        Main.session.changePhone(new_phone);
+        refresh();
     }
 
     @FXML
     void ChangeTheUsername(javafx.event.ActionEvent event) {
+    String new_username = NewUsername.getText();
+        Main.session.changeUsername(new_username);
+        refresh();
+    }
+
+    public void refresh(){
+        Text username = new Text(Main.session.getUser().getUsername());
+        Username.getChildren().clear();
+        Username.getChildren().add(username);
+
+        Text email = new Text(Main.session.getUser().getMail_user());
+        Email.getChildren().clear();
+        Email.getChildren().add(email);
+
+        Text phone = new Text(Main.session.getUser().getTel_user());
+        Phone.getChildren().clear();
+        Phone.getChildren().add(phone);
+
+
+        Text budget = new Text( String.valueOf(Main.session.getUser().getUser_max_budget()));
+        Budget.getChildren().clear();
+        Budget.getChildren().add(budget);
 
     }
 
@@ -127,11 +159,22 @@ public void DisplayUsername(){
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-           // ObservableStringValue username =  FXCollections.observableArrayList(Main.session.getUser().getUsername());
-            //Username.se
+        Text username = new Text(Main.session.getUser().getUsername());
+        Username.getChildren().clear();
+        Username.getChildren().add(username);
 
-       // ObservableList<Storage> listofStorage = FXCollections.observableArrayList(Main.session.utilities.getStorageRoom().val
+        Text email = new Text(Main.session.getUser().getMail_user());
+        Email.getChildren().clear();
+        Email.getChildren().add(email);
 
+        Text phone = new Text(Main.session.getUser().getTel_user());
+        Phone.getChildren().clear();
+        Phone.getChildren().add(phone);
+
+
+        Text budget = new Text( String.valueOf(Main.session.getUser().getUser_max_budget()));
+        Budget.getChildren().clear();
+        Budget.getChildren().add(budget);
     }
 
 
